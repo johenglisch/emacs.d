@@ -61,7 +61,7 @@
             'flycheck 'flycheck-haskell 'flycheck-clojure 'flycheck-pos-tip))
 
 (when (eq system-type 'window-nt)
-  (add-to-list 'init-package-list 'powershell))
+  (setq init-package-list (add-to-list 'init-package-list 'powershell)))
 
 
 ;;; Elisp files ------------------------------------------------------
