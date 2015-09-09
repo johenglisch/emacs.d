@@ -44,6 +44,8 @@
   (nmap "#" 'evil-goto-mark-line)
   (nmap "'" 'evil-search-work-backward)
 
+  (nmap "z g" 'ispell-word)
+
   (nmap "DEL" 'flycheck-mode)
 
   ;; "Leader" bindings (really just mappings starting with SPC)
