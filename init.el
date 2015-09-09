@@ -54,14 +54,14 @@
 
 (defvar init-package-list nil)
 (setq init-package-list
-      (list 'color-theme-solarized
-            'evil 'evil-matchit 'evil-leader 'evil-paredit 'powerline-evil
-            'flx-ido 'smex
-            'magit 'paredit 'cider 'markdown-mode 'haskell-mode
-            'flycheck 'flycheck-haskell 'flycheck-clojure 'flycheck-pos-tip))
+      '(color-theme-solarized
+        evil evil-matchit evil-leader evil-paredit powerline-evil
+        flx-ido smex
+        magit paredit cider markdown-mode haskell-mode
+        flycheck flycheck-haskell flycheck-clojure flycheck-pos-tip))
 
-(when (eq system-type 'window-nt)
-  (setq init-package-list (add-to-list 'init-package-list 'powershell)))
+(when (eq system-type 'windows-nt)
+  (add-to-list 'init-package-list 'powershell))
 
 
 ;;; Elisp files ------------------------------------------------------
