@@ -60,6 +60,10 @@
 
   (nmap "SPC H" 'font-lock-mode)
 
+  (if (package-installed-p 'smex)
+      (nmap "SPC k" 'smex)
+    (nmap "SPC k" 'execute-extended-command))
+
   (when (package-installed-p 'magit)
     (nmap "SPC g c" 'magit-commit)
     (nmap "SPC g d" 'magit-diff)
