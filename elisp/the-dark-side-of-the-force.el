@@ -60,6 +60,8 @@
 
   (nmap "SPC H" 'font-lock-mode)
 
+  (nmap "SPC w" 'whitespace-cleanup)
+
   (if (package-installed-p 'smex)
       (nmap "SPC k" 'smex)
     (nmap "SPC k" 'execute-extended-command))
