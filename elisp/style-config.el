@@ -15,6 +15,7 @@
 (add-hook 'term-mode-hook #'font-lock-mode)
 (add-hook 'powershell-mode-hook #'font-lock-mode)
 (add-hook 'tex-mode-hook #'font-lock-mode)
+(add-hook 'rst-mode-hook #'font-lock-mode)
 
 (when (package-installed-p 'color-theme-solarized)
   (load-theme 'solarized t t)
