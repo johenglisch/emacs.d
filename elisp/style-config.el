@@ -31,7 +31,7 @@
     (enable-theme 'solarized)))
 
 (when window-system
-  (load-theme 'tango))
+  (load-theme 'tango-dark))
 
 (cl-case system-type
   ('gnu/linux  (set-frame-font "DejaVu Sans Mono-10"))
