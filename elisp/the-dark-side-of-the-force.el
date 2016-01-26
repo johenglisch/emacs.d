@@ -3,8 +3,10 @@
   (evil-mode 1)
   (load-library "evil-minions")
 
+  (evil-set-initial-state 'term-mode 'emacs)
+
   ;;; Plugins
-  
+
   (when (require 'evil-matchit nil t)
     (global-evil-matchit-mode 1))
 
