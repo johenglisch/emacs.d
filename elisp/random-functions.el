@@ -9,3 +9,12 @@
 (defun init-byte-compile-current ()
   (interactive)
   (byte-compile-file (buffer-file-name)))
+
+
+(defun init-english ()
+  (interactive)
+  (ispell-change-dictionary "british"))
+
+(defun init-deutsch ()
+  (interactive)
+  (ispell-change-dictionary "deutsch8"))
