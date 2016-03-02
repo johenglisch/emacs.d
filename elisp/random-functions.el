@@ -11,10 +11,12 @@
   (byte-compile-file (buffer-file-name)))
 
 
-(defun init-english ()
+(defun init-english-spelling ()
   (interactive)
-  (ispell-change-dictionary "british"))
+  (ispell-change-dictionary "british")
+  (flyspell-mode 1))
 
-(defun init-deutsch ()
+(defun init-german-spelling ()
   (interactive)
-  (ispell-change-dictionary "deutsch8"))
+  (ispell-change-dictionary "deutsch8")
+  (flyspell-mode 1))
