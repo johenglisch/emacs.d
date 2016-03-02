@@ -56,7 +56,7 @@
 (setq init-package-list
       '(color-theme-solarized
         evil evil-matchit evil-leader evil-paredit powerline-evil
-        flx-ido smex
+        flx-ido smex ace-jump-mode
         magit paredit cider markdown-mode haskell-mode
         flycheck flycheck-haskell flycheck-clojure flycheck-pos-tip))
 

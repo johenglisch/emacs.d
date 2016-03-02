@@ -52,6 +52,8 @@
 
   ;; "Leader" bindings (really just mappings starting with SPC)
 
+  (nmap "SPC SPC" 'ace-jump-mode)
+
   (nmap "SPC e v" (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
   (nmap "SPC e c" (lambda () (interactive) (find-file "~/.when/calendar")))
 
