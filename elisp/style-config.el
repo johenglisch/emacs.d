@@ -34,5 +34,5 @@
   (load-theme 'tango-dark))
 
 (cl-case system-type
-  ('gnu/linux  (set-frame-font "DejaVu Sans Mono-10"))
+  ('gnu/linux  (set-frame-font "Hack-10"))
   ('windows-nt (set-frame-font "Consolas-10")))
