@@ -18,5 +18,5 @@
 
 (defun init-german-spelling ()
   (interactive)
-  (ispell-change-dictionary "deutsch8")
+  (ispell-change-dictionary "german-old8")
   (flyspell-mode 1))
