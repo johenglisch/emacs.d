@@ -37,8 +37,8 @@
   (nmap "," 'evil-ex)
   (vmap "," 'evil-ex)
 
-  (nmap "ä" 'evil-forward-paragraph)
-  (nmap "ü" 'evil-backward-paragraph)
+  (nmap "ä" 'init-goto-next-blank-line)
+  (nmap "ü" 'init-goto-previous-blank-line)
   (nmap "Ä" 'evil-scroll-down)
   (nmap "Ü" 'evil-scroll-up)
 
