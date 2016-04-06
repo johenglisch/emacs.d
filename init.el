@@ -58,7 +58,7 @@
         evil evil-matchit evil-leader evil-paredit powerline-evil
         flx-ido smex ace-jump-mode
         magit paredit cider markdown-mode haskell-mode
-        flycheck flycheck-haskell flycheck-clojure flycheck-pos-tip))
+        flycheck flycheck-haskell flycheck-clojure))
 
 (when (eq system-type 'windows-nt)
   (add-to-list 'init-package-list 'powershell))
