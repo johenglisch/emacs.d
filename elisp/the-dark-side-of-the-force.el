@@ -46,6 +46,9 @@
   (nmap "#" 'evil-goto-mark-line)
   (nmap "'" 'evil-search-work-backward)
 
+  (nmap "-" 'init-move-line-up)
+  (nmap "+" 'init-move-line-down)
+
   (nmap "z g" 'ispell-word)
 
   (nmap "DEL" 'flycheck-mode)
