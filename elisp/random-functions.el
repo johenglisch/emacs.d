@@ -20,3 +20,22 @@
   (interactive)
   (ispell-change-dictionary "german-old8")
   (flyspell-mode 1))
+
+
+(defun init-move-line-down (lines)
+  (interactive "p")
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines lines))
+    (forward-line lines)
+    (move-to-column col)))
+
+(defun init-move-line-up (lines)
+  (interactive "p")
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines (- lines)))
+    (forward-line -1)
+    (move-to-column col)))
