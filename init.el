@@ -36,6 +36,7 @@
 (setq auto-save-list-file-prefix     init-tmp-dir)
 (setq package-user-dir               (format "%s%s" init-tmp-dir "elpa/"))
 (setq ido-save-directory-list-file   (format "%s%s" init-tmp-dir "ido-last"))
+(setq save-place-file                (format "%s%s" init-tmp-dir "places"))
 (setq smex-save-file                 (format "%s%s" init-tmp-dir "smex-items"))
 
 (add-to-list 'load-path "~/.emacs.d/elisp/")

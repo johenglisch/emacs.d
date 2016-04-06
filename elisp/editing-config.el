@@ -8,3 +8,6 @@
 
 (when (eq system-type 'windows-nt)
   (prefer-coding-system 'utf-8-unix))
+
+(require 'saveplace)
+(setq-default save-place t)
