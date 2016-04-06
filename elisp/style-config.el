@@ -36,3 +36,7 @@
 (cl-case system-type
   ('gnu/linux  (set-frame-font "Hack-10"))
   ('windows-nt (set-frame-font "Consolas-10")))
+
+(when (require 'diminish nil t)
+  (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
+  (eval-after-load "paredit" '(diminish 'paredit-mode)))
