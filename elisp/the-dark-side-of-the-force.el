@@ -74,6 +74,4 @@
     (nmap "SPC k" 'execute-extended-command))
 
   (when (package-installed-p 'magit)
-    (nmap "SPC g c" 'magit-commit)
-    (nmap "SPC g d" 'magit-diff)
-    (nmap "SPC g s" 'magit-status)))
+    (nmap "SPC g" 'magit-status)))
