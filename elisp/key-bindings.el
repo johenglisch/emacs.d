@@ -25,9 +25,7 @@
   (global-set-key (kbd "<execute>") 'smex))
 
 (when (package-installed-p 'magit)
-  (global-set-key (kbd "C-c g c") 'magit-commit)
-  (global-set-key (kbd "C-c g d") 'magit-diff)
-  (global-set-key (kbd "C-c g s") 'magit-status))
+  (global-set-key (kbd "C-c g") 'magit-status))
 
 
 ;;; Platform-Dependent
