@@ -59,6 +59,7 @@
         evil evil-matchit evil-leader evil-paredit powerline-evil
         flx-ido smex ace-jump-mode
         magit paredit cider markdown-mode haskell-mode
+        auctex auctex-latexmk
         flycheck flycheck-haskell flycheck-clojure))
 
 (when (eq system-type 'windows-nt)

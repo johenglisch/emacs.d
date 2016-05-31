@@ -30,9 +30,11 @@
 
 (setq TeX-view-format "pdf")
 
-(when (and (load "auctex" t t)
-           (load "preview-latex" t t))
+(when (package-installed-p 'auctex)
   (if (eq system-type 'windows-nt)
       (require 'tex-mik))
 
-  (add-hook 'LaTeX-mode-hook #'font-lock-mode))
+  (add-hook 'TeX-mode-hook #'font-lock-mode)
+
+  (when (require 'auctex-latexmk nil t)
+    (auctex-latexmk-setup)))
