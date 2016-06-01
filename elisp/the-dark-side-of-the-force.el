@@ -75,5 +75,8 @@
       (nmap "SPC k" 'smex)
     (nmap "SPC k" 'execute-extended-command))
 
+  (if (package-installed-p 'relative-line-numbers)
+      (nmap "SPC n" 'relative-line-numbers-mode))
+
   (when (package-installed-p 'magit)
     (nmap "SPC g" 'magit-status)))

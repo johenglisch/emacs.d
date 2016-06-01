@@ -57,6 +57,7 @@
 (setq init-package-list
       '(color-theme-solarized diminish
         evil evil-matchit evil-leader evil-paredit powerline-evil
+        relative-line-numbers
         flx-ido smex ace-jump-mode
         magit paredit cider markdown-mode haskell-mode
         auctex auctex-latexmk
