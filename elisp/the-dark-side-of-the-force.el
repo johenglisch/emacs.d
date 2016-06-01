@@ -29,6 +29,8 @@
   (mmap "H" 'evil-beginning-of-line)
   (nmap "L" 'evil-end-of-line)
 
+  (imap "C-e" 'evil-end-of-line)
+
   (nmap "Q" 'evil-fill-and-move)
   (vmap "Q" 'evil-fill-and-move)
 
