@@ -79,4 +79,13 @@
       (nmap "SPC n" 'relative-line-numbers-mode))
 
   (when (package-installed-p 'magit)
-    (nmap "SPC g" 'magit-status)))
+    (nmap "SPC g" 'magit-status))
+
+  ;; Paredit Bindings
+
+  (when (package-installed-p 'paredit)
+    (evil-define-key 'normal paredit-mode-map
+      (kbd "> )") 'paredit-forward-slurp-sexp
+      (kbd "< )") 'paredit-forward-barf-sexp
+      (kbd "> (") 'paredit-backward-barf-sexp
+      (kbd "< (") 'paredit-backward-slurp-sexp)))
