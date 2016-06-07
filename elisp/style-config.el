@@ -31,7 +31,7 @@
     (enable-theme 'solarized)))
 
 (when window-system
-  (load-theme 'tango-dark))
+  (load-theme 'deeper-blue))
 
 (cl-case system-type
   ('gnu/linux  (set-frame-font "Hack-10"))
