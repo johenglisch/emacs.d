@@ -18,6 +18,9 @@
   (define-key evil-motion-state-map (kbd "RET") nil)
   (define-key evil-motion-state-map " " nil)
 
+  (define-key evil-normal-state-map (kbd "RET") nil)
+  (define-key evil-normal-state-map " " nil)
+
   (vmap "C-g" 'evil-exit-visual-state)
   (imap "C-g" 'evil-normal-state)
   (rmap "C-g" 'evil-normal-state)
@@ -88,4 +91,15 @@
       (kbd "> )") 'paredit-forward-slurp-sexp
       (kbd "< )") 'paredit-forward-barf-sexp
       (kbd "> (") 'paredit-backward-barf-sexp
-      (kbd "< (") 'paredit-backward-slurp-sexp)))
+      (kbd "< (") 'paredit-backward-slurp-sexp))
+
+  ;; Clojure Bindings
+
+  (when (package-installed-p 'cider)
+    (evil-define-key 'normal clojure-mode-map
+      (kbd "Ö K") 'cider-eval-buffer
+      (kbd "Ö M") 'cider-test-run-ns-tests
+      (kbd "RET") '(lambda ()
+                     (interactive)
+                     (cider-eval-buffer)
+                     (cider-test-run-ns-tests nil)))))
