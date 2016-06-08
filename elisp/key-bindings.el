@@ -16,7 +16,7 @@
   (global-set-key (kbd "<apps>") 'execute-extended-command))
 
 (when (package-installed-p 'ace-jump-mode)
-  (global-set-key (kbd "C-c SPC") 'ace-jump-mode))
+  (global-set-key (kbd "C-c c") 'ace-jump-mode))
 
 (when (package-installed-p 'smex)
   (global-set-key (kbd "M-x") 'smex)
