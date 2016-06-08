@@ -42,3 +42,8 @@
   (eval-after-load "paredit" '(diminish 'paredit-mode))
   (eval-after-load "eldoc" '(diminish 'eldoc-mode))
   (eval-after-load "autorevert" '(diminish 'auto-revert-mode)))
+
+(when (require 'powerline nil t)
+  (if (require 'powerline-evil nil t)
+      (powerline-evil-vim-color-theme)
+    (powerline-default-theme)))
