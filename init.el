@@ -56,7 +56,7 @@
 (defvar init-package-list nil)
 (setq init-package-list
       '(color-theme-solarized diminish
-        evil evil-matchit evil-leader evil-paredit powerline-evil
+        evil evil-matchit evil-leader evil-paredit powerline-evil airline-themes
         relative-line-numbers
         flx-ido smex ace-jump-mode
         magit paredit cider markdown-mode haskell-mode
