@@ -101,5 +101,5 @@
       (kbd "Ö M") 'cider-test-run-ns-tests
       (kbd "RET") '(lambda ()
                      (interactive)
-                     (cider-eval-buffer)
+                     (cider-load-buffer)
                      (cider-test-run-ns-tests nil)))))
