@@ -59,4 +59,4 @@
           airline-utf-glyph-readonly           #xe0a2
           airline-utf-glyph-linenumber         #xe0a1)
 
-    (load-theme 'airline-powerlineish t t)))
+    (load-theme 'airline-hybridline t nil)))
