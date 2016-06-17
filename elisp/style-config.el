@@ -1,11 +1,4 @@
-;;; Appearance settings
-
-(setq inhibit-startup-screen t)
-
-(menu-bar-mode 0)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
-(fringe-mode 0)
+;;; Code appearance
 
 (column-number-mode t)
 
@@ -16,6 +9,9 @@
 (add-hook 'powershell-mode-hook #'font-lock-mode)
 (add-hook 'tex-mode-hook #'font-lock-mode)
 (add-hook 'rst-mode-hook #'font-lock-mode)
+
+
+;;; Colour theme
 
 (when (package-installed-p 'color-theme-solarized)
   (load-theme 'solarized t t)
@@ -30,12 +26,25 @@
     (set-frame-parameter nil 'background-mode 'light)
     (enable-theme 'solarized)))
 
+
+;;; Frame Settings
+
+(setq inhibit-startup-screen t)
+
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+(fringe-mode 0)
+
 (when window-system
   (load-theme 'deeper-blue))
 
 (cl-case system-type
   ('gnu/linux  (set-frame-font "Hack-10"))
   ('windows-nt (set-frame-font "Consolas-10")))
+
+
+;;; Modeline
 
 (when (require 'diminish nil t)
   (eval-after-load "autorevert" '(diminish 'auto-revert-mode))
