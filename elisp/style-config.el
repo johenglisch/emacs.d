@@ -39,6 +39,8 @@
 (when window-system
   (load-theme 'deeper-blue))
 
+(setq frame-title-format "%b – Emacs")
+
 (cl-case system-type
   ('gnu/linux  (set-frame-font "Hack-10"))
   ('windows-nt (set-frame-font "Consolas-10")))
