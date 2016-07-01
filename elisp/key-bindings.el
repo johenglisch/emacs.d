@@ -27,9 +27,6 @@
 (when (package-installed-p 'magit)
   (global-set-key (kbd "C-c g") 'magit-status))
 
-(when (package-installed-p 'company)
-  (global-set-key (kbd "TAB") #'company-indent-or-complete-common))
-
 
 ;;; Platform-Dependent
 

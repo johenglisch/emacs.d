@@ -16,5 +16,4 @@
   (which-key-mode))
 
 (when (require 'company nil t)
-  (setq company-idle-delay nil)
   (add-hook 'after-init-hook 'global-company-mode))
