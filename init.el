@@ -83,3 +83,5 @@
 (load-library "the-dark-side-of-the-force")
 
 (load-library "key-bindings")
+
+(load "local" t)
