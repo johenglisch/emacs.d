@@ -39,6 +39,9 @@
 
   (nmap "ö" (kbd "C-w"))
 
+  (nmap "C-w t"   'other-frame)
+  (nmap "C-w C-t" 'other-frame)
+
   (nmap "," 'evil-ex)
   (vmap "," 'evil-ex)
 
