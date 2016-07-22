@@ -1,5 +1,6 @@
 (when (require 'evil nil t)
 
+  (global-evil-leader-mode 1)
   (evil-mode 1)
   (load-library "evil-minions")
 
@@ -63,32 +64,33 @@
 
   ;; "Leader" bindings (really just mappings starting with SPC)
 
-  (nmap "SPC SPC" 'ace-jump-mode)
+  (setq evil-leader/leader "<SPC>")
 
-  (nmap "SPC e v" (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
-  (nmap "SPC e c" (lambda () (interactive) (find-file "~/.when/calendar")))
+  (evil-leader/set-key
+    evil-leader/leader 'ace-jump-mode
 
-  (nmap "SPC v e" (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
+    "ev" (lambda () (interactive) (find-file "~/.emacs.d/init.el"))
+    "ec" (lambda () (interactive) (find-file "~/.when/calendar"))
+    "ve" (lambda () (interactive) (find-file "~/.emacs.d/init.el"))
 
-  (nmap "SPC f" 'ido-find-file)
-  (nmap "SPC b" 'ido-switch-buffer)
+    "f"  'ido-find-file
+    "b"  'ido-switch-buffer
 
-  (nmap "SPC H" 'font-lock-mode)
+    "H"  'font-lock-mode
+    "w"  'whitespace-cleanup
 
-  (nmap "SPC w" 'whitespace-cleanup)
-
-  (if (package-installed-p 'smex)
-      (nmap "SPC k" 'smex)
-    (nmap "SPC k" 'execute-extended-command))
+    "k"  (if (package-installed-p 'smex)
+             'smex
+           'execute-extended-command))
 
   (if (package-installed-p 'relative-line-numbers)
-      (nmap "SPC n" 'relative-line-numbers-mode))
+      (evil-leader/set-key "n" 'relative-line-numbers-mode))
 
   (when (package-installed-p 'magit)
-    (nmap "SPC g" 'magit-status))
+    (evil-leader/set-key "g" 'magit-status))
 
   (when (package-installed-p 'projectile)
-    (nmap "SPC p" 'projectile-command-map))
+    (evil-leader/set-key "p" 'projectile-command-map))
 
   ;; Paredit Bindings
 
