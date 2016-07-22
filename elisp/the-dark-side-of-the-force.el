@@ -105,8 +105,6 @@
 
   (when (package-installed-p 'cider)
     (evil-define-key 'normal clojure-mode-map
-      (kbd "Ö K") 'cider-eval-buffer
-      (kbd "Ö M") 'cider-test-run-ns-tests
       (kbd "RET") '(lambda ()
                      (interactive)
                      (cider-load-buffer)
