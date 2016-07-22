@@ -41,7 +41,7 @@
 (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" init-tmp-dir))
 (setq projectile-cache-file          (expand-file-name "projectile.cache" init-tmp-dir))
 
-(add-to-list 'load-path "~/.emacs.d/elisp/")
+(add-to-list 'load-path (expand-file-name "elisp/" user-emacs-directory))
 
 (if (eq system-type 'windows-nt)
     (setq default-directory "~/"))
