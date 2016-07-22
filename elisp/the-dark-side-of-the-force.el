@@ -87,6 +87,9 @@
   (when (package-installed-p 'magit)
     (nmap "SPC g" 'magit-status))
 
+  (when (package-installed-p 'projectile)
+    (nmap "SPC p" 'projectile-command-map))
+
   ;; Paredit Bindings
 
   (when (package-installed-p 'paredit)
