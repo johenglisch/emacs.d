@@ -15,4 +15,4 @@
 ;;; Projectile
 
 (when (package-installed-p 'projectile)
-  (projctile-global-mode))
+  (projectile-global-mode))
