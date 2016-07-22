@@ -62,7 +62,7 @@
 
   (nmap "DEL" 'flycheck-mode)
 
-  ;; "Leader" bindings (really just mappings starting with SPC)
+  ;; Leader bindings
 
   (setq evil-leader/leader "<SPC>")
 
