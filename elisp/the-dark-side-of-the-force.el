@@ -37,7 +37,7 @@
   (nmap "Q" 'evil-fill-and-move)
   (vmap "Q" 'evil-fill-and-move)
 
-  (nmap "ö" (kbd "C-w"))
+  (nmap "ö" 'evil-window-map)
 
   (nmap "C-w t"   'other-frame)
   (nmap "C-w C-t" 'other-frame)
