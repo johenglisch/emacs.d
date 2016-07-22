@@ -11,3 +11,8 @@
 
 (when (package-installed-p 'flx-ido)
   (flx-ido-mode))
+
+;;; Projectile
+
+(when (package-installed-p 'projectile)
+  (projctile-global-mode))
