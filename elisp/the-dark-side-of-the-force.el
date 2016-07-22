@@ -53,7 +53,7 @@
 
   (nmap "´" 'evil-execute-macro)
   (nmap "#" 'evil-goto-mark-line)
-  (nmap "'" 'evil-search-work-backward)
+  (nmap "'" 'evil-search-word-backward)
 
   (nmap "-" 'init-move-line-up)
   (nmap "+" 'init-move-line-down)
