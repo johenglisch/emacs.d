@@ -39,8 +39,8 @@
 
   (nmap "ö" 'evil-window-map)
 
-  (nmap "C-w t"   'other-frame)
-  (nmap "C-w C-t" 'other-frame)
+  (define-key evil-window-map "t" 'other-frame)
+  (define-key evil-window-map "\C-t" 'other-frame)
 
   (nmap "," 'evil-ex)
   (vmap "," 'evil-ex)
