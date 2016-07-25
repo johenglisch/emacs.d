@@ -17,6 +17,8 @@
 (when (package-installed-p 'projectile)
   (projectile-global-mode)
 
+  ;; projectile is lacking `other-frame` bindings
+
   (defun projectile-find-other-file-other-frame (&optional flex-matching)
     (interactive "P")
     (-if-let (other-files (projectile-get-other-files (buffer-file-name) (projectile-current-project-files) flex-matching))
