@@ -16,11 +16,8 @@
 
   ;;; Keybindings
 
-  (define-key evil-motion-state-map (kbd "RET") nil)
-  (define-key evil-motion-state-map " " nil)
-
-  (define-key evil-normal-state-map (kbd "RET") nil)
-  (define-key evil-normal-state-map " " nil)
+  (nm-map "RET" nil)
+  (nm-map "SPC" nil)
 
   (v-map "C-g" 'evil-exit-visual-state)
   (i-map "C-g" 'evil-normal-state)
