@@ -22,45 +22,45 @@
   (define-key evil-normal-state-map (kbd "RET") nil)
   (define-key evil-normal-state-map " " nil)
 
-  (vmap "C-g" 'evil-exit-visual-state)
-  (imap "C-g" 'evil-normal-state)
-  (rmap "C-g" 'evil-normal-state)
-  (omap "C-g" 'evil-force-normal-state)
+  (v-map "C-g" 'evil-exit-visual-state)
+  (i-map "C-g" 'evil-normal-state)
+  (r-map "C-g" 'evil-normal-state)
+  (o-map "C-g" 'evil-force-normal-state)
 
-  (mmap "j" 'evil-next-visual-line)
-  (mmap "k" 'evil-previous-visual-line)
+  (m-map "j" 'evil-next-visual-line)
+  (m-map "k" 'evil-previous-visual-line)
 
-  (mmap "H" 'evil-beginning-of-line)
-  (nmap "L" 'evil-end-of-line)
+  (m-map "H" 'evil-beginning-of-line)
+  (n-map "L" 'evil-end-of-line)
 
-  (imap "C-e" 'evil-end-of-line)
+  (i-map "C-e" 'evil-end-of-line)
 
-  (nmap "Q" 'evil-fill-and-move)
-  (vmap "Q" 'evil-fill-and-move)
+  (n-map "Q" 'evil-fill-and-move)
+  (v-map "Q" 'evil-fill-and-move)
 
-  (nmap "ö" 'evil-window-map)
+  (n-map "ö" 'evil-window-map)
 
   (define-key evil-window-map "t" 'other-frame)
   (define-key evil-window-map "\C-t" 'other-frame)
 
-  (nmap "," 'evil-ex)
-  (vmap "," 'evil-ex)
+  (n-map "," 'evil-ex)
+  (v-map "," 'evil-ex)
 
-  (nmap "ä" 'init-goto-next-blank-line)
-  (nmap "ü" 'init-goto-previous-blank-line)
-  (nmap "Ä" 'evil-scroll-down)
-  (nmap "Ü" 'evil-scroll-up)
+  (n-map "ä" 'init-goto-next-blank-line)
+  (n-map "ü" 'init-goto-previous-blank-line)
+  (n-map "Ä" 'evil-scroll-down)
+  (n-map "Ü" 'evil-scroll-up)
 
-  (nmap "´" 'evil-execute-macro)
-  (nmap "#" 'evil-goto-mark-line)
-  (nmap "'" 'evil-search-word-backward)
+  (n-map "´" 'evil-execute-macro)
+  (n-map "#" 'evil-goto-mark-line)
+  (n-map "'" 'evil-search-word-backward)
 
-  (nmap "-" 'init-move-line-up)
-  (nmap "+" 'init-move-line-down)
+  (n-map "-" 'init-move-line-up)
+  (n-map "+" 'init-move-line-down)
 
-  (nmap "z g" 'ispell-word)
+  (n-map "z g" 'ispell-word)
 
-  (nmap "DEL" 'flycheck-mode)
+  (n-map "DEL" 'flycheck-mode)
 
   ;; Leader bindings
 
