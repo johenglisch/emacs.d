@@ -19,3 +19,7 @@
 
 (defun r-map (key function)
   (define-key evil-replace-state-map (kbd key) function))
+
+(defun nm-map (key function)
+  (nmap key function)
+  (mmap key function))
