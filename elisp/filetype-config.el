@@ -1,3 +1,8 @@
+;;; Elisp
+
+(add-hook 'emacs-lisp-mode-hook #'eldoc-mode)
+
+
 ;;; Clojure
 
 (when (package-installed-p 'cider)
