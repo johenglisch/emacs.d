@@ -76,6 +76,8 @@
     "f"  'ido-find-file
     "b"  'ido-switch-buffer
 
+    "a"  'ag-project-regexp
+
     "H"  'font-lock-mode
     "w"  'whitespace-cleanup
 
