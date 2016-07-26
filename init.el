@@ -60,7 +60,7 @@
       '(color-theme-solarized diminish
         evil evil-matchit evil-leader evil-paredit powerline-evil airline-themes
         relative-line-numbers
-        flx-ido smex ace-jump-mode company which-key projectile
+        ag flx-ido smex ace-jump-mode company which-key projectile
         magit paredit cider markdown-mode haskell-mode
         auctex auctex-latexmk
         flycheck flycheck-haskell flycheck-clojure))
