@@ -27,33 +27,33 @@
   (r-map "C-g" 'evil-normal-state)
   (o-map "C-g" 'evil-force-normal-state)
 
-  (m-map "j" 'evil-next-visual-line)
-  (m-map "k" 'evil-previous-visual-line)
+  (nm-map "j" 'evil-next-visual-line)
+  (nm-map "k" 'evil-previous-visual-line)
 
-  (m-map "H" 'evil-beginning-of-line)
-  (n-map "L" 'evil-end-of-line)
+  (nm-map "H" 'evil-beginning-of-line)
+  (nm-map "L" 'evil-end-of-line)
 
   (i-map "C-e" 'evil-end-of-line)
 
   (n-map "Q" 'evil-fill-and-move)
   (v-map "Q" 'evil-fill-and-move)
 
-  (n-map "ö" 'evil-window-map)
+  (nm-map "ö" 'evil-window-map)
 
   (define-key evil-window-map "t" 'other-frame)
   (define-key evil-window-map "\C-t" 'other-frame)
 
-  (n-map "," 'evil-ex)
+  (nm-map "," 'evil-ex)
   (v-map "," 'evil-ex)
 
-  (n-map "ä" 'init-goto-next-blank-line)
-  (n-map "ü" 'init-goto-previous-blank-line)
-  (n-map "Ä" 'evil-scroll-down)
-  (n-map "Ü" 'evil-scroll-up)
+  (nm-map "ä" 'init-goto-next-blank-line)
+  (nm-map "ü" 'init-goto-previous-blank-line)
+  (nm-map "Ä" 'evil-scroll-down)
+  (nm-map "Ü" 'evil-scroll-up)
 
-  (n-map "´" 'evil-execute-macro)
-  (n-map "#" 'evil-goto-mark-line)
-  (n-map "'" 'evil-search-word-backward)
+  (nm-map "´" 'evil-execute-macro)
+  (nm-map "#" 'evil-goto-mark-line)
+  (nm-map "'" 'evil-search-word-backward)
 
   (n-map "-" 'init-move-line-up)
   (n-map "+" 'init-move-line-down)
