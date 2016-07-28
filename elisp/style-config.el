@@ -13,6 +13,8 @@
 
 (when (require 'fill-column-indicator nil t)
 
+  (setq fci-rule-color "#444444")
+
   (define-globalized-minor-mode global-fci-mode fci-mode
     (lambda ()
       (if buffer-file-name
