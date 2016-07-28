@@ -59,7 +59,7 @@
 (setq init-package-list
       '(color-theme-solarized diminish
         evil evil-matchit evil-leader evil-paredit powerline-evil airline-themes
-        relative-line-numbers
+        fill-column-indicator relative-line-numbers
         ag flx-ido smex ace-jump-mode company which-key projectile
         magit paredit cider markdown-mode haskell-mode
         auctex auctex-latexmk
