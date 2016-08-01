@@ -8,7 +8,8 @@
 (when (package-installed-p 'cider)
   (add-hook 'cider-mode-hook #'eldoc-mode)
   (setq nrepl-hide-special-buffers t)
-  (setq cider-repl-pop-to-buffer-on-connect nil))
+  (setq cider-repl-pop-to-buffer-on-connect nil)
+  (setq cider-repl-display-help-banner nil))
 
 
 ;;; Markdown-mode
