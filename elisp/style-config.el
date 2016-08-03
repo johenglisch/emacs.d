@@ -75,6 +75,8 @@
       (powerline-evil-vim-color-theme)
     (powerline-default-theme))
 
+  (setq powerline-text-scale-factor 0.65)
+
   (when (require 'airline-themes nil t)
 
     (setq airline-utf-glyph-separator-left     #xe0b0
@@ -86,3 +88,10 @@
           airline-utf-glyph-linenumber         #xe0a1)
 
     (load-theme 'airline-hybridline t nil)))
+
+(set-face-attribute 'mode-line                    nil :family "Aller")
+(set-face-attribute 'mode-line-buffer-id          nil :family "Aller")
+(set-face-attribute 'mode-line-buffer-id-inactive nil :family "Aller")
+(set-face-attribute 'mode-line-emphasis           nil :family "Aller")
+(set-face-attribute 'mode-line-highlight          nil :family "Aller")
+(set-face-attribute 'mode-line-inactive           nil :family "Aller")
