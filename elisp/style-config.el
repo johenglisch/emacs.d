@@ -10,6 +10,7 @@
 (add-hook 'tex-mode-hook #'font-lock-mode)
 (add-hook 'rst-mode-hook #'font-lock-mode)
 (add-hook 'ag-mode-hook #'font-lock-mode)
+(add-hook 'cider-repl-mode-hook #'font-lock-mode)
 
 (when (require 'fill-column-indicator nil t)
 
