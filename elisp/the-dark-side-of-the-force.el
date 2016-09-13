@@ -24,9 +24,6 @@
   (r-map "C-g" 'evil-normal-state)
   (o-map "C-g" 'evil-force-normal-state)
 
-  (nm-map "j" 'evil-next-visual-line)
-  (nm-map "k" 'evil-previous-visual-line)
-
   (nm-map "H" 'evil-beginning-of-line)
   (nm-map "L" 'evil-end-of-line)
 
