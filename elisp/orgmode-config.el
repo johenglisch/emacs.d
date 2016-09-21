@@ -1,5 +1,10 @@
 ;;; Org-mode Settings
 
+;; The version of org-mode shipped with emacs doesn't know how to cider..
+(let ((org-mode-dir (expand-file-name "org-mode/lisp" user-emacs-directory)))
+  (if (file-directory-p org-mode-dir)
+      (add-to-list 'load-path org-mode-dir)))
+
 (require 'org)
 (require 'ob-clojure)
 
