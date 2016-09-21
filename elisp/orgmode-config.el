@@ -1,6 +1,7 @@
 ;;; Org-mode Settings
 
 (require 'org)
+(require 'ob-clojure)
 
 (defvar init-agenda-dir nil)
 (setq init-agenda-dir

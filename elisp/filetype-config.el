@@ -6,6 +6,7 @@
 ;;; Clojure
 
 (when (package-installed-p 'cider)
+  (setq org-babel-clojure-backend 'cider)
   (add-hook 'cider-mode-hook #'eldoc-mode)
   (setq nrepl-hide-special-buffers t)
   (setq cider-repl-pop-to-buffer-on-connect nil)
