@@ -23,6 +23,9 @@
 
   (global-fci-mode 1))
 
+(when (package-installed-p 'relative-line-numbers)
+  (setq relative-line-numbers-format (lambda (offset) (format "% 4d " (abs offset)))))
+
 
 ;;; Colour theme
 
