@@ -25,3 +25,14 @@
 (add-hook 'org-mode-hook #'font-lock-mode)
 
 (setq org-src-fontify-natively nil)
+
+
+;; Org-drill
+
+(when (require 'org-drill nil t)
+  (add-to-list 'org-modules 'org-drill)
+  (setq org-drill-add-random-noise-to-intervals-p t)
+  (setq org-drill-hint-separator "||")
+  (setq org-drill-left-cloze-delimiter "<[")
+  (setq org-drill-right-cloze-delimiter "]>")
+  (setq org-drill-learn-fraction 0.25))
