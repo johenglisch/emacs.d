@@ -61,6 +61,11 @@
   ('gnu/linux  (set-frame-font "Hack-10" nil t))
   ('windows-nt (set-frame-font "Consolas-10" nil t)))
 
+(setq eol-mnemonic-dos "\\")
+(setq eol-mnemonic-unix ":")
+(setq eol-mnemonic-mac "/")
+(setq eol-mnemonic-undecided ":")
+
 
 ;;; Modeline
 
