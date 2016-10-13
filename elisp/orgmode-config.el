@@ -16,7 +16,7 @@
         "~/.org-mode/"))
 
 (setq org-todo-keywords
-      '((sequence "TODO" "MIGHTDO" "WAITING" "|" "DONE")))
+      '((sequence "TODO" "WAITING" "|" "DONE")))
 
 (when (file-directory-p init-agenda-dir)
   (setq org-agenda-files (list init-agenda-dir)))
