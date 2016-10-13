@@ -5,6 +5,7 @@
   (load-library "evil-minions")
 
   (evil-set-initial-state 'term-mode 'emacs)
+  (evil-set-initial-state 'Info-mode 'emacs)
 
   ;;; Plugins
 
