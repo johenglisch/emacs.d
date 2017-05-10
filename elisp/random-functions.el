@@ -13,12 +13,12 @@
 
 (defun init-english-spelling ()
   (interactive)
-  (ispell-change-dictionary "british")
+  (ispell-change-dictionary "en_GB")
   (flyspell-mode 1))
 
 (defun init-german-spelling ()
   (interactive)
-  (ispell-change-dictionary "german-old8")
+  (ispell-change-dictionary "de_DE-1901")
   (flyspell-mode 1))
 
 
