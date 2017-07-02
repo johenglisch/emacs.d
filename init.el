@@ -56,8 +56,7 @@
                          ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
 
-(defvar init-package-list nil)
-(setq init-package-list
+(setq package-selected-packages
       '(color-theme-solarized diminish
         evil evil-matchit evil-leader evil-paredit
         flx-ido smex ace-jump-mode company which-key projectile
@@ -66,7 +65,7 @@
         flycheck flycheck-haskell))
 
 (when (eq system-type 'windows-nt)
-  (add-to-list 'init-package-list 'powershell))
+  (add-to-list 'package-selected-packages 'powershell))
 
 
 ;;; Elisp files ------------------------------------------------------

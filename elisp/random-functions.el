@@ -1,7 +1,7 @@
 (defun init-install-packages ()
   (interactive)
   (package-refresh-contents)
-  (dolist (pkg init-package-list)
+  (dolist (pkg package-selected-packages)
     (unless (package-installed-p pkg)
       (package-install pkg))))
 
