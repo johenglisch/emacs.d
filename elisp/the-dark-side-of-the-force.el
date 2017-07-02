@@ -81,9 +81,6 @@
              'smex
            'execute-extended-command))
 
-  (if (package-installed-p 'relative-line-numbers)
-      (evil-leader/set-key "n" 'relative-line-numbers-mode))
-
   (when (package-installed-p 'magit)
     (evil-leader/set-key "g" 'magit-status))
 
