@@ -27,7 +27,7 @@
 ;;; Haskell-mode
 
 (when (package-installed-p 'haskell-mode)
-  (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation))
+  (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation))
 
 
 ;;; LaTeX/AucTeX

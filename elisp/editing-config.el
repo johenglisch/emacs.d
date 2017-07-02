@@ -16,4 +16,4 @@
   (which-key-mode))
 
 (when (require 'company nil t)
-  (add-hook 'after-init-hook 'global-company-mode))
+  (add-hook 'after-init-hook #'global-company-mode))
