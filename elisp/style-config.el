@@ -12,20 +12,6 @@
 (add-hook 'ag-mode-hook #'font-lock-mode)
 (add-hook 'cider-repl-mode-hook #'font-lock-mode)
 
-(when (require 'fill-column-indicator nil t)
-
-  (setq fci-rule-color "#444444")
-
-  (define-globalized-minor-mode global-fci-mode fci-mode
-    (lambda ()
-      (if buffer-file-name
-          (fci-mode 1))))
-
-  (global-fci-mode 1))
-
-(when (package-installed-p 'relative-line-numbers)
-  (setq relative-line-numbers-format (lambda (offset) (format "% 4d " (abs offset)))))
-
 
 ;;; Colour theme
 
