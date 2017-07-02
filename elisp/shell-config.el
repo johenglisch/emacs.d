@@ -7,5 +7,4 @@
 
 (when (eq system-type 'gnu/linux)
   (setq explicit-shell-file-name "/bin/zsh")
-  (setq
-   shell-file-name explicit-shell-file-name))
+  (setq shell-file-name explicit-shell-file-name))
