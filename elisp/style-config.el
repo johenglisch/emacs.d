@@ -12,6 +12,8 @@
 (add-hook 'ag-mode-hook #'font-lock-mode)
 (add-hook 'cider-repl-mode-hook #'font-lock-mode)
 
+(global-hl-line-mode 1)
+
 
 ;;; Colour theme
 
