@@ -18,6 +18,8 @@
 (setq org-todo-keywords
       '((sequence "TODO" "WAITING" "|" "DONE")))
 
+(setq org-log-done 'time)
+
 (when (file-directory-p init-agenda-dir)
   (setq org-agenda-files (list init-agenda-dir)))
 
