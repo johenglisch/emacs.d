@@ -27,3 +27,29 @@
 (add-hook 'org-mode-hook #'font-lock-mode)
 
 (setq org-src-fontify-natively nil)
+
+
+;; Latex export
+
+(require 'ox-latex)
+
+(if (eq system-type 'gnu/linux)
+    (add-to-list 'org-file-apps '("\\.pdf" . "evince %s")))
+
+(add-to-list 'org-latex-classes
+             '("scrartcl"
+               "\\documentclass[a4paper]{scrartcls}\n[DEFAULT-PACKAGES]\n[PACKAGES]\n\\widowpenalty=10000\n\\clubpenalty=10000\n[EXTRA]"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+(add-to-list 'org-latex-packages-alist
+             '("" "booktabs" t))
+
+(setq org-latex-tables-booktabs t)
+(setq org-latex-caption-above nil)
+
+(setq org-entities-user '(("space" "\\ " nil " " " " " " " ")
+                          ("sentend" "\\@" nil "" "" "" "")))
