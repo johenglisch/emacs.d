@@ -87,6 +87,11 @@
   (when (package-installed-p 'projectile)
     (evil-leader/set-key "p" #'projectile-command-map))
 
+  ;; Org-mode Bindings
+
+  (evil-define-key 'normal org-mode-map
+    (kbd "RET") #'org-export-dispatch)
+
   ;; Paredit Bindings
 
   (when (package-installed-p 'paredit)
