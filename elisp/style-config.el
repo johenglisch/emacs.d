@@ -64,4 +64,5 @@
   (eval-after-load "paredit"    '(diminish 'paredit-mode))
   (eval-after-load "undo-tree"  '(diminish 'undo-tree-mode))
   (eval-after-load "which-key"  '(diminish 'which-key-mode))
-  (eval-after-load "projectile" '(diminish 'projectile-mode)))
+  (eval-after-load "projectile" '(diminish 'projectile-mode))
+  (eval-after-load "yasnippet"  '(diminish 'yas-minor-mode)))

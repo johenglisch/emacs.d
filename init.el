@@ -61,7 +61,8 @@
         flx-ido smex ace-jump-mode company which-key projectile
         magit paredit cider markdown-mode haskell-mode
         auctex auctex-latexmk
-        flycheck flycheck-haskell))
+        flycheck flycheck-haskell
+        yasnippet))
 
 (when (eq system-type 'windows-nt)
   (add-to-list 'package-selected-packages 'powershell))
