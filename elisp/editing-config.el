@@ -18,5 +18,5 @@
 (when (require 'company nil t)
   (add-hook 'after-init-hook #'global-company-mode))
 
-(when (require 'yasnippet)
+(when (require 'yasnippet nil t)
   (yas-global-mode 1))
