@@ -50,7 +50,7 @@
 
 (setq org-latex-tables-booktabs t)
 (setq org-latex-caption-above nil)
-(serq org-latex-image-default-width nil)
+(setq org-latex-image-default-width nil)
 
 (setq org-entities-user '(("space" "\\ " nil " " " " " " " ")
                           ("sentend" "\\@" nil "" "" "" "")))
