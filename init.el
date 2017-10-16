@@ -59,9 +59,9 @@
       '(color-theme-solarized diminish
         evil evil-matchit evil-leader evil-paredit
         flx-ido smex ace-jump-mode company which-key projectile
-        magit paredit cider markdown-mode haskell-mode
+        magit paredit cider markdown-mode haskell-mode rust-mode
         auctex auctex-latexmk
-        flycheck flycheck-haskell
+        flycheck flycheck-haskell flycheck-rust
         yasnippet))
 
 (when (eq system-type 'windows-nt)
