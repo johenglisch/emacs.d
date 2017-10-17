@@ -28,6 +28,8 @@
 (add-hook 'org-mode-hook #'font-lock-mode)
 (setq org-src-fontify-natively nil)
 
+(setq org-adapt-indentation nil)
+
 
 ;; Latex export
 
