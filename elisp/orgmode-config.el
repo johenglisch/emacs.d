@@ -32,6 +32,7 @@
 ;; Latex export
 
 (require 'ox-latex)
+(require 'ox-beamer)
 
 (if (eq system-type 'gnu/linux)
     (add-to-list 'org-file-apps '("\\.pdf" . "evince %s")))
