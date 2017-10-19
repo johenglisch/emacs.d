@@ -21,7 +21,8 @@
 (setq org-log-done 'time)
 
 (when (file-directory-p init-agenda-dir)
-  (setq org-agenda-files (list init-agenda-dir)))
+  (setq org-agenda-files
+        (directory-files-recursively init-agenda-dir "\.org$")))
 
 (setq org-list-allow-alphabetical t)
 
