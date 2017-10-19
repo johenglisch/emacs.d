@@ -68,6 +68,7 @@
     "ev" (lambda () (interactive) (find-file "~/.emacs.d/init.el"))
     "ec" (lambda () (interactive) (find-file "~/.when/calendar"))
     "ve" (lambda () (interactive) (find-file "~/.emacs.d/init.el"))
+    "et" (lambda () (interactive) (find-file (expand-file-name "todo.org" init-agenda-dir)))
 
     "f"  #'ido-find-file
     "b"  #'ido-switch-buffer
