@@ -7,7 +7,6 @@
     (add-to-list 'load-path org-mode-dir)))
 
 (require 'org)
-(require 'ob-clojure)
 
 (defvar init-agenda-dir nil)
 (setq init-agenda-dir
@@ -31,6 +30,12 @@
 
 (setq org-adapt-indentation nil)
 
+;; Babel
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)
+   (clojure . t)))
 
 ;; Latex export
 
