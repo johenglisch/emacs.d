@@ -16,6 +16,9 @@
   (when (package-installed-p 'evil-paredit)
     (add-hook 'paredit-mode-hook #'evil-paredit-mode))
 
+  (when (require 'evil-surround nil t)
+    (global-evil-surround-mode 1))
+
   ;;; Keybindings
 
   (nm-map "RET" nil)
