@@ -15,7 +15,11 @@
 
 (when (file-directory-p init-agenda-dir)
   (setq org-agenda-files
-        (directory-files-recursively init-agenda-dir "\.org$")))
+        (directory-files-recursively init-agenda-dir "\.org$"))
+
+  (setq org-archive-location
+        (concat (file-name-as-directory init-agenda-dir)
+                "archiv.org::datetree/")))
 
 (setq org-list-allow-alphabetical t)
 
