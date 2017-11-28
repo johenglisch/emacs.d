@@ -11,9 +11,6 @@
 (defvar init-agenda-dir nil)
 (setq init-agenda-dir "~/org/")
 
-(setq org-todo-keywords
-      '((sequence "TODO" "WAITING" "|" "DONE")))
-
 (setq org-log-done 'time)
 
 (when (file-directory-p init-agenda-dir)
