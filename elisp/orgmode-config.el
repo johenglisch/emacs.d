@@ -9,10 +9,7 @@
 (require 'org)
 
 (defvar init-agenda-dir nil)
-(setq init-agenda-dir
-      (if (eq system-type 'windows-nt)
-          "~/Documents/org-mode/"
-        "~/.org-mode/"))
+(setq init-agenda-dir "~/org/")
 
 (setq org-todo-keywords
       '((sequence "TODO" "WAITING" "|" "DONE")))
