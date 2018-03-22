@@ -43,12 +43,3 @@
     (skip-syntax-backward " >")
     (unless (search-backward-regexp "^\\s *$" nil t)
       (goto-char (point-min)))))
-
-
-;; TODO Make this interactive.
-(defun init-dump-value (value)
-  "Dump VALUE at the end of the scratch buffer."
-  (with-current-buffer "*scratch*"
-    (save-excursion
-      (goto-char (point-max))
-      (insert (pp-to-string value)))))
