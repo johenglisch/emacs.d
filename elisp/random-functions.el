@@ -11,17 +11,6 @@
   (byte-compile-file (buffer-file-name)))
 
 
-(defun init-english-spelling ()
-  (interactive)
-  (ispell-change-dictionary "en_GB")
-  (flyspell-mode 1))
-
-(defun init-german-spelling ()
-  (interactive)
-  (ispell-change-dictionary "de_DE-1901")
-  (flyspell-mode 1))
-
-
 (defun init-move-line-down (lines)
   (interactive "p")
   (let ((col (current-column)))
