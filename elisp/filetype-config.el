@@ -37,6 +37,9 @@
 
 (setq TeX-view-format "pdf")
 
+(setq font-latex-fontify-script nil)
+(setq font-latex-fontify-sectioning 1.0)
+
 (when (package-installed-p 'auctex)
   (if (eq system-type 'windows-nt)
       (require 'tex-mik))
