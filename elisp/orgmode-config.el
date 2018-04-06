@@ -15,7 +15,8 @@
 
 (when (file-directory-p init-agenda-dir)
   (setq org-agenda-files
-        (directory-files-recursively init-agenda-dir "\.org$"))
+        `(,(expand-file-name "todo.org" init-agenda-dir)
+          ,(expand-file-name "termine.org" init-agenda-dir)))
 
   (setq org-archive-location
         (concat (file-name-as-directory init-agenda-dir)
