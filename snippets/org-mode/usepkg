@@ -1,0 +1,4 @@
+# name: usepkg
+# key: usepkg
+# --
+\usepackage$1{$2}$0

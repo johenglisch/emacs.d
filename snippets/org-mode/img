@@ -1,0 +1,6 @@
+# name: img
+# key: img
+# --
+\\begin{center}
+\\includegraphics[width=$1]{$2}
+\\end{center}

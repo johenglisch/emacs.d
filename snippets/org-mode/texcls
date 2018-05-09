@@ -1,0 +1,4 @@
+# name: texcls
+# key: texcls
+# --
+#+LATEX_CLASS: ${1:scrartcl}
