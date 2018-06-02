@@ -70,7 +70,6 @@
   (n-map "SPC SPC" #'ace-jump-mode)
 
   (n-map "SPC e v" (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
-  (n-map "SPC e c" (lambda () (interactive) (find-file "~/.when/calendar")))
   (n-map "SPC v e" (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
   (n-map "SPC e t" (lambda () (interactive) (find-file (expand-file-name "todo.org" init-agenda-dir))))
 
