@@ -65,9 +65,6 @@
         yasnippet
         diminish))
 
-(when (eq system-type 'windows-nt)
-  (add-to-list 'package-selected-packages 'powershell))
-
 
 ;;; Elisp files ------------------------------------------------------
 
