@@ -18,6 +18,11 @@
   (when (require 'evil-surround nil t)
     (global-evil-surround-mode 1))
 
+  ;;; Better dot operator
+
+  (evil-declare-motion #'init-goto-next-blank-line)
+  (evil-declare-motion #'init-goto-previous-blank-line)
+
   ;;; Keybindings
 
   (nm-map "RET" nil)
