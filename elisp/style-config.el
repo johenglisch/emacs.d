@@ -14,22 +14,6 @@
 (add-hook 'fountain-mode-hook #'font-lock-mode)
 
 
-;;; Colour theme
-
-(when (package-installed-p 'color-theme-solarized)
-  (load-theme 'solarized t t)
-
-  (defun init-solarized-dark ()
-    (interactive)
-    (set-frame-parameter nil 'background-mode 'dark)
-    (enable-theme 'solarized))
-
-  (defun init-solarized-light ()
-    (interactive)
-    (set-frame-parameter nil 'background-mode 'light)
-    (enable-theme 'solarized)))
-
-
 ;;; Frame Settings
 
 (setq inhibit-startup-screen t)
