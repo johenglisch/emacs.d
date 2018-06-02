@@ -57,13 +57,13 @@
 (package-initialize)
 
 (setq package-selected-packages
-      '(diminish
-        evil evil-matchit evil-leader evil-paredit evil-surround
+      '(evil evil-matchit evil-leader evil-paredit evil-surround
         flx-ido smex ace-jump-mode company which-key projectile
         magit paredit cider markdown-mode haskell-mode rust-mode fountain-mode
         auctex auctex-latexmk
         flycheck flycheck-haskell flycheck-rust
-        yasnippet))
+        yasnippet
+        diminish))
 
 (when (eq system-type 'windows-nt)
   (add-to-list 'package-selected-packages 'powershell))
