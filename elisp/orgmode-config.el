@@ -1,11 +1,5 @@
 ;;; Org-mode Settings
 
-;; The version of org-mode shipped with emacs doesn't know how to cider..
-;; Git repo: git://orgmode.org/org-mode.git
-(let ((org-mode-dir (expand-file-name "org-mode-src/lisp" user-emacs-directory)))
-  (if (file-directory-p org-mode-dir)
-    (add-to-list 'load-path org-mode-dir)))
-
 (require 'org)
 
 (defvar init-agenda-dir nil)
