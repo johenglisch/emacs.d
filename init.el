@@ -57,7 +57,7 @@
 (package-initialize)
 
 (setq package-selected-packages
-      '(evil evil-matchit evil-leader evil-paredit evil-surround
+      '(evil evil-matchit evil-paredit evil-surround
         flx-ido smex ace-jump-mode company which-key projectile
         magit paredit cider markdown-mode haskell-mode rust-mode fountain-mode
         auctex auctex-latexmk

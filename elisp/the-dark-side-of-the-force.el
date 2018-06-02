@@ -1,6 +1,5 @@
 (when (require 'evil nil t)
 
-  (global-evil-leader-mode 1)
   (evil-mode 1)
   (load-library "evil-minions")
 
@@ -63,33 +62,30 @@
 
   ;; Leader bindings
 
-  (setq evil-leader/leader "<SPC>")
+  (n-map "SPC SPC" #'ace-jump-mode)
 
-  (evil-leader/set-key
-    evil-leader/leader #'ace-jump-mode
+  (n-map "SPC e v" (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
+  (n-map "SPC e c" (lambda () (interactive) (find-file "~/.when/calendar")))
+  (n-map "SPC v e" (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
+  (n-map "SPC e t" (lambda () (interactive) (find-file (expand-file-name "todo.org" init-agenda-dir))))
 
-    "ev" (lambda () (interactive) (find-file "~/.emacs.d/init.el"))
-    "ec" (lambda () (interactive) (find-file "~/.when/calendar"))
-    "ve" (lambda () (interactive) (find-file "~/.emacs.d/init.el"))
-    "et" (lambda () (interactive) (find-file (expand-file-name "todo.org" init-agenda-dir)))
+  (n-map "SPC f" #'ido-find-file)
+  (n-map "SPC b" #'ido-switch-buffer)
 
-    "f"  #'ido-find-file
-    "b"  #'ido-switch-buffer
+  (n-map "SPC a" #'ag-project-regexp)
 
-    "a"  #'ag-project-regexp
+  (n-map "SPC H" #'font-lock-mode)
+  (n-map "SPC w" #'whitespace-cleanup)
 
-    "H"  #'font-lock-mode
-    "w"  #'whitespace-cleanup
-
-    "k"  (if (package-installed-p 'smex)
-             #'smex
-           #'execute-extended-command))
+  (n-map "SPC k"  (if (package-installed-p 'smex)
+                      #'smex
+                    #'execute-extended-command))
 
   (when (package-installed-p 'magit)
-    (evil-leader/set-key "g" #'magit-status))
+    (n-map "SPC g" #'magit-status))
 
   (when (package-installed-p 'projectile)
-    (evil-leader/set-key "p" #'projectile-command-map))
+    (n-map "SPC p" #'projectile-command-map))
 
   ;; Org-mode Bindings
 
