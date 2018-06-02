@@ -31,8 +31,5 @@
 
 ;;; Platform-Dependent
 
-(when (eq system-type 'windows-nt)
-  (global-set-key (kbd "C-c t") #'powershell))
-
 (when (eq system-type 'gnu/linux)
   (global-set-key (kbd "C-c t") #'term))
