@@ -11,6 +11,7 @@
 (add-hook 'rst-mode-hook #'font-lock-mode)
 (add-hook 'ag-mode-hook #'font-lock-mode)
 (add-hook 'cider-repl-mode-hook #'font-lock-mode)
+(add-hook 'fountain-mode-hook #'font-lock-mode)
 
 
 ;;; Colour theme

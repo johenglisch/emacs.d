@@ -60,7 +60,7 @@
       '(color-theme-solarized diminish
         evil evil-matchit evil-leader evil-paredit evil-surround
         flx-ido smex ace-jump-mode company which-key projectile
-        magit paredit cider markdown-mode haskell-mode rust-mode
+        magit paredit cider markdown-mode haskell-mode rust-mode fountain-mode
         auctex auctex-latexmk
         flycheck flycheck-haskell flycheck-rust
         yasnippet))
