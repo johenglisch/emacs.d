@@ -1,11 +1,3 @@
-(defun init-install-packages ()
-  (interactive)
-  (package-refresh-contents)
-  (dolist (pkg package-selected-packages)
-    (unless (package-installed-p pkg)
-      (package-install pkg))))
-
-
 (defun init-byte-compile-current ()
   (interactive)
   (byte-compile-file (buffer-file-name)))
