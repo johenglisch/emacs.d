@@ -15,10 +15,6 @@
 (unless (package-installed-p 'smex)
   (global-set-key (kbd "<apps>") #'execute-extended-command))
 
-(when (package-installed-p 'ace-jump-mode)
-  ;; FIXME This binding conflicts with org-capture
-  (global-set-key (kbd "C-c c") #'ace-jump-mode))
-
 (when (package-installed-p 'smex)
   (global-set-key (kbd "M-x") #'smex)
   (global-set-key (kbd "<menu>") #'smex)
