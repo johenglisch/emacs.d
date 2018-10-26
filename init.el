@@ -59,8 +59,8 @@
 (setq package-selected-packages
       '(evil evil-matchit evil-paredit evil-surround
         flx-ido smex ace-jump-mode company which-key projectile
-        magit paredit cider markdown-mode haskell-mode rust-mode fountain-mode
-        auctex auctex-latexmk
+        magit paredit auctex auctex-latexmk cider fountain-mode haskell-mode
+        json-mode markdown-mode rust-mode
         flycheck flycheck-haskell flycheck-rust
         yasnippet
         diminish))
