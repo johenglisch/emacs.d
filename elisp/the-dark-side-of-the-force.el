@@ -67,7 +67,7 @@
 
   ;; Leader bindings
 
-  (n-map "SPC SPC" #'ace-jump-mode)
+  (n-map "SPC SPC" (lambda () (interactive) (switch-to-buffer nil)))
 
   (n-map "SPC e v" (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
   (n-map "SPC v e" (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
