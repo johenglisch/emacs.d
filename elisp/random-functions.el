@@ -15,6 +15,7 @@
 (defun init-move-line-up (lines)
   (interactive "p")
   (let ((col (current-column)))
+    (move-beginning-of-line nil)
     (save-excursion
       (forward-line)
       (transpose-lines (- lines)))
