@@ -15,8 +15,5 @@
 (when (require 'which-key nil t)
   (which-key-mode))
 
-(when (require 'company nil t)
-  (add-hook 'after-init-hook #'global-company-mode))
-
 (when (require 'yasnippet nil t)
   (yas-global-mode 1))
