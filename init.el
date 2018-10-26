@@ -57,13 +57,13 @@
 (package-initialize)
 
 (setq package-selected-packages
-      '(evil evil-matchit evil-paredit evil-surround
-        flx-ido smex ace-jump-mode company which-key projectile
-        magit paredit auctex auctex-latexmk cider fountain-mode haskell-mode
-        json-mode markdown-mode rust-mode
+      '(flx-ido magit projectile smex
+        diminish which-key
+        paredit yasnippet
+        auctex auctex-latexmk cider fountain-mode haskell-mode json-mode
+        markdown-mode rust-mode
         flycheck flycheck-haskell flycheck-rust
-        yasnippet
-        diminish))
+        evil evil-matchit evil-paredit evil-surround))
 
 
 ;;; Elisp files ------------------------------------------------------
