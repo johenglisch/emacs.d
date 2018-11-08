@@ -53,6 +53,8 @@
   (n-map "Q" #'evil-execute-macro)
   ;; TODO Make QQ repeat the last macro
 
+  (n-map "z g" #'ispell-word)
+
   (nm-map "," #'evil-ex)
   (v-map "," #'evil-ex)
 
@@ -61,8 +63,6 @@
 
   (n-map "-" #'init-move-line-up)
   (n-map "+" #'init-move-line-down)
-
-  (n-map "z g" #'ispell-word)
 
   (n-map "DEL" #'flycheck-mode)
 
