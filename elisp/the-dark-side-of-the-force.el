@@ -41,23 +41,20 @@
   (nm-map "H" #'evil-beginning-of-line)
   (nm-map "L" #'evil-end-of-line)
 
-  (i-map "C-e" #'evil-end-of-line)
-
-  (n-map "Q" #'evil-fill-and-move)
-  (v-map "Q" #'evil-fill-and-move)
-
-  (nm-map "ö" #'evil-window-map)
-
-  (define-key evil-window-map "t" #'other-frame)
-  (define-key evil-window-map "\C-t" #'other-frame)
-
-  (nm-map "," #'evil-ex)
-  (v-map "," #'evil-ex)
-
   (nm-map "ä" #'init-goto-next-blank-line)
   (nm-map "ü" #'init-goto-previous-blank-line)
   (nm-map "Ä" #'evil-scroll-down)
   (nm-map "Ü" #'evil-scroll-up)
+
+  (nm-map "ö" #'evil-window-map)
+  (define-key evil-window-map "t" #'other-frame)
+  (define-key evil-window-map "\C-t" #'other-frame)
+
+  (n-map "Q" #'evil-fill-and-move)
+  (v-map "Q" #'evil-fill-and-move)
+
+  (nm-map "," #'evil-ex)
+  (v-map "," #'evil-ex)
 
   (nm-map "´" #'evil-execute-macro)
   (nm-map "#" #'evil-goto-mark-line)
@@ -69,6 +66,8 @@
   (n-map "z g" #'ispell-word)
 
   (n-map "DEL" #'flycheck-mode)
+
+  (i-map "C-e" #'evil-end-of-line)
 
   ;; Leader bindings
 
