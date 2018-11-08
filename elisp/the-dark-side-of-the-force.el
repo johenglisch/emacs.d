@@ -50,8 +50,8 @@
   (define-key evil-window-map "t" #'other-frame)
   (define-key evil-window-map "\C-t" #'other-frame)
 
-  (n-map "Q" #'evil-fill-and-move)
-  (v-map "Q" #'evil-fill-and-move)
+  (n-map "Q" #'evil-execute-macro)
+  ;; TODO Make QQ repeat the last macro
 
   (nm-map "," #'evil-ex)
   (v-map "," #'evil-ex)
