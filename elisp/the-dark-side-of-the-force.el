@@ -56,8 +56,7 @@
   (nm-map "," #'evil-ex)
   (v-map "," #'evil-ex)
 
-  (nm-map "´" #'evil-execute-macro)
-  (nm-map "#" #'evil-goto-mark-line)
+  (nm-map "#" #'evil-goto-mark)
   (nm-map "'" #'evil-search-word-backward)
 
   (n-map "-" #'init-move-line-up)
