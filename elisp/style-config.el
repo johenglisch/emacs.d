@@ -26,6 +26,7 @@
   (load-theme 'deeper-blue))
 
 (setq frame-title-format "%b – Emacs")
+(setq frame-resize-pixelwise t)
 
 (cl-case system-type
   ('gnu/linux  (set-frame-font "Hack-10" nil t))
