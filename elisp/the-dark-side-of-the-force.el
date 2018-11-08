@@ -33,6 +33,11 @@
   (r-map "C-g" #'evil-normal-state)
   (o-map "C-g" #'evil-force-normal-state)
 
+  (n-map "j" #'evil-next-visual-line)
+  (v-map "j" #'evil-next-visual-line)
+  (n-map "k" #'evil-previous-visual-line)
+  (v-map "k" #'evil-previous-visual-line)
+
   (nm-map "H" #'evil-beginning-of-line)
   (nm-map "L" #'evil-end-of-line)
 
