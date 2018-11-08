@@ -85,7 +85,7 @@
   (when (package-installed-p 'magit)
     (n-map "SPC g" #'magit-status))
 
-  (n-map "SPC H" #'font-lock-mode)
+  (n-map "SPC g h" #'font-lock-mode)
 
   (n-map "SPC k"  (if (package-installed-p 'smex)
                       #'smex
