@@ -72,27 +72,29 @@
 
   (n-map "SPC SPC" (lambda () (interactive) (switch-to-buffer nil)))
 
+  (n-map "SPC a" #'ag-project-regexp)
+
+  (n-map "SPC b" #'ido-switch-buffer)
+
   (n-map "SPC e v" (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
   (n-map "SPC v e" (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
   (n-map "SPC e t" (lambda () (interactive) (find-file (expand-file-name "todo.org" init-agenda-dir))))
 
   (n-map "SPC f" #'ido-find-file)
-  (n-map "SPC b" #'ido-switch-buffer)
 
-  (n-map "SPC a" #'ag-project-regexp)
+  (when (package-installed-p 'magit)
+    (n-map "SPC g" #'magit-status))
 
   (n-map "SPC H" #'font-lock-mode)
-  (n-map "SPC w" #'whitespace-cleanup)
 
   (n-map "SPC k"  (if (package-installed-p 'smex)
                       #'smex
                     #'execute-extended-command))
 
-  (when (package-installed-p 'magit)
-    (n-map "SPC g" #'magit-status))
-
   (when (package-installed-p 'projectile)
     (n-map "SPC p" #'projectile-command-map))
+
+  (n-map "SPC w" #'whitespace-cleanup)
 
   ;; Org-mode Bindings
 
