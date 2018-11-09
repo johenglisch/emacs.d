@@ -83,7 +83,7 @@
   (n-map "SPC f" #'ido-find-file)
 
   (when (package-installed-p 'magit)
-    (n-map "SPC g" #'magit-status))
+    (n-map "SPC g g" #'magit-status))
 
   (n-map "SPC g h" #'font-lock-mode)
 
