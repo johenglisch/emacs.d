@@ -13,11 +13,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(info-menu-header ((t (:family "Aller"))))
- '(info-title-1 ((t (:family "Aller"))))
- '(info-title-2 ((t (:family "Aller"))))
- '(info-title-3 ((t (:family "Aller"))))
- '(info-title-4 ((t (:family "Aller")))))
+ )
 
 
 ;;; Folders ----------------------------------------------------------
