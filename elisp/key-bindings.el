@@ -5,6 +5,8 @@
 
 (global-set-key (kbd "C-c f") #'find-file-at-point)
 
+(global-set-key (kbd "C-c t") #'term)
+
 
 ;;; Plugins
 
@@ -25,9 +27,3 @@
 
 (when (package-installed-p 'magit)
   (global-set-key (kbd "C-c g") #'magit-status))
-
-
-;;; Platform-Dependent
-
-(when (eq system-type 'gnu/linux)
-  (global-set-key (kbd "C-c t") #'term))
