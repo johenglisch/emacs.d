@@ -116,6 +116,27 @@
 
 ;;; Plugins ----------------------------------------------------------
 
+;; Smex
+
+(when (package-installed-p 'smex)
+  (smex-initialize))
+
+;; Ido
+
+(ido-mode)
+
+;; Flx-ido
+
+(when (package-installed-p 'flx-ido)
+  (flx-ido-mode))
+
+;; Projectile
+
+(when (package-installed-p 'projectile)
+  (projectile-global-mode))
+
+;; Yasnippet
+
 (when (require 'yasnippet nil t)
   (yas-global-mode 1))
 
@@ -124,7 +145,6 @@
 
 (load-library "random-functions")
 
-(load-library "fuzzymatch-config")
 (load-library "orgmode-config")
 (load-library "shell-config")
 (load-library "filetype-config")
