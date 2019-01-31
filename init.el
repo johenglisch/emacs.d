@@ -97,6 +97,7 @@
 (add-hook 'ag-mode-hook #'font-lock-mode)
 (add-hook 'cider-repl-mode-hook #'font-lock-mode)
 (add-hook 'fountain-mode-hook #'font-lock-mode)
+(add-hook 'org-mode-hook #'font-lock-mode)
 
 
 ;;; Editing ----------------------------------------------------------
@@ -141,11 +142,69 @@
   (yas-global-mode 1))
 
 
+;;; Org-mode Settings ------------------------------------------------
+
+(require 'org)
+
+(setq org-list-allow-alphabetical t)
+(setq org-src-fontify-natively nil)
+(setq org-adapt-indentation nil)
+
+;; Agenda
+
+(defvar init-agenda-dir nil)
+(setq init-agenda-dir "~/org/")
+
+(setq org-log-done 'time)
+
+(when (file-directory-p init-agenda-dir)
+  (setq org-agenda-files
+        `(,(expand-file-name "todo.org" init-agenda-dir)
+          ,(expand-file-name "termine.org" init-agenda-dir)))
+
+  (setq org-archive-location
+        (concat (file-name-as-directory init-agenda-dir)
+                "archiv.org::datetree/")))
+
+;; Babel
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)
+   (clojure . t)))
+
+;; Latex export
+
+(require 'ox-latex)
+(require 'ox-beamer)
+
+(if (eq system-type 'gnu/linux)
+    (add-to-list 'org-file-apps '("\\.pdf" . "evince %s")))
+
+(add-to-list 'org-latex-classes
+             '("scrartcl"
+               "\\documentclass[a4paper]{scrartcl}\n[DEFAULT-PACKAGES]\n[PACKAGES]\n\\widowpenalty=10000\n\\clubpenalty=10000\n[EXTRA]"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+(add-to-list 'org-latex-packages-alist
+             '("" "booktabs" t))
+
+(setq org-latex-tables-booktabs t)
+(setq org-latex-caption-above nil)
+(setq org-latex-image-default-width nil)
+
+(setq org-entities-user '(("space" "\\ " nil " " " " " " " ")
+                          ("sentend" "\\@" nil "" "" "" "")))
+
+
 ;;; Elisp files ------------------------------------------------------
 
 (load-library "random-functions")
 
-(load-library "orgmode-config")
 (load-library "shell-config")
 (load-library "filetype-config")
 (load-library "paredit-config")
