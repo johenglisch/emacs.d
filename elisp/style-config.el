@@ -39,15 +39,3 @@
 (setq eol-mnemonic-unix ":")
 (setq eol-mnemonic-mac "/")
 (setq eol-mnemonic-undecided ":")
-
-
-;;; Modeline
-
-(when (require 'diminish nil t)
-  (eval-after-load "autorevert" '(diminish 'auto-revert-mode))
-  (eval-after-load "eldoc"      '(diminish 'eldoc-mode))
-  (eval-after-load "paredit"    '(diminish 'paredit-mode))
-  (eval-after-load "undo-tree"  '(diminish 'undo-tree-mode))
-  (eval-after-load "which-key"  '(diminish 'which-key-mode))
-  (eval-after-load "projectile" '(diminish 'projectile-mode))
-  (eval-after-load "yasnippet"  '(diminish 'yas-minor-mode)))
