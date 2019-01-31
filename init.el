@@ -54,12 +54,9 @@
 
 (setq package-selected-packages
       '(flx-ido magit projectile smex
-        diminish which-key
-        paredit yasnippet
-        auctex auctex-latexmk cider fountain-mode haskell-mode json-mode
-        markdown-mode rust-mode
-        flycheck flycheck-haskell flycheck-rust
-        evil evil-matchit evil-paredit evil-surround))
+        flycheck paredit yasnippet
+        auctex auctex-latexmk cider fountain-mode json-mode
+        markdown-mode))
 
 
 ;;; Elisp files ------------------------------------------------------
