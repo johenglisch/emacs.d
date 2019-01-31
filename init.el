@@ -120,7 +120,7 @@
 (setq-default save-place t)
 
 
-;;; Terminal emulator ------------------------------------------------
+;;; Terminal Emulator ------------------------------------------------
 
 (add-hook 'comint-output-filter-functions
           #'shell-strip-ctrl-m nil t)
