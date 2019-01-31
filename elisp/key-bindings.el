@@ -3,6 +3,8 @@
 (global-set-key (kbd "C-c e")
                 (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
 
+(global-set-key (kbd "C-c f") #'find-file-at-point)
+
 
 ;;; Plugins
 
