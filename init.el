@@ -99,11 +99,31 @@
 (add-hook 'fountain-mode-hook #'font-lock-mode)
 
 
+;;; Editing ----------------------------------------------------------
+
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+
+(setq-default c-basic-offset 4)
+(setq-default indent-tabs-mode nil)
+
+(when (eq system-type 'windows-nt)
+  (prefer-coding-system 'utf-8-unix))
+
+(require 'saveplace)
+(setq-default save-place t)
+
+
+;;; Plugins ----------------------------------------------------------
+
+(when (require 'yasnippet nil t)
+  (yas-global-mode 1))
+
+
 ;;; Elisp files ------------------------------------------------------
 
 (load-library "random-functions")
 
-(load-library "editing-config")
 (load-library "fuzzymatch-config")
 (load-library "orgmode-config")
 (load-library "shell-config")
