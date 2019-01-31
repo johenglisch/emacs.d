@@ -71,9 +71,7 @@
 (load-library "filetype-config")
 (load-library "paredit-config")
 (load-library "linter-config")
-
-(load-library "the-dark-side-of-the-force")
-
+ 
 (load-library "key-bindings")
 
 (load "local" t)
