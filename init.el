@@ -53,8 +53,10 @@
 (setq package-selected-packages
       '(flx-ido magit projectile smex
         flycheck paredit yasnippet
-        auctex auctex-latexmk cider fountain-mode json-mode
-        markdown-mode))
+        cider fountain-mode json-mode markdown-mode
+        gnu-elpa-keyring-update))
+
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 
 ;;; Helper Functions -------------------------------------------------
