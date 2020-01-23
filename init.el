@@ -56,7 +56,8 @@
         cider fountain-mode json-mode markdown-mode
         gnu-elpa-keyring-update))
 
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+(if (version< emacs-version "26")
+    (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 
 ;;; Helper Functions -------------------------------------------------
