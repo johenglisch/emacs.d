@@ -106,6 +106,7 @@
 (add-hook 'cider-repl-mode-hook #'font-lock-mode)
 (add-hook 'fountain-mode-hook #'font-lock-mode)
 (add-hook 'org-mode-hook #'font-lock-mode)
+(add-hook 'magit-mode-hook #'font-lock-mode)
 
 
 ;;; Editing ----------------------------------------------------------
