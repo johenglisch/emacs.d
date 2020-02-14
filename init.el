@@ -325,3 +325,6 @@
 
 (when (package-installed-p 'magit)
   (global-set-key (kbd "C-c g") #'magit-status))
+
+(when (package-installed-p 'projectile)
+  (global-set-key (kbd "C-c p") #'projectile-command-map))
