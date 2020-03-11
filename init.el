@@ -93,7 +93,7 @@
 
 (cl-case system-type
   ('gnu/linux  (set-frame-font "Hack-10" nil t))
-  ('windows-nt (set-frame-font "Consolas-10" nil t)))
+  ('windows-nt (set-frame-font "Consolas-12" nil t)))
 
 (when (eq system-type 'windows-nt)
     (setq inhibit-compacting-font-caches t))
