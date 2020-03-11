@@ -70,6 +70,10 @@
   (interactive)
   (byte-compile-file (buffer-file-name)))
 
+(defun init-open-init.el ()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
 
 ;;; Appearance -------------------------------------------------------
 
@@ -303,8 +307,7 @@
 
 ;; General
 
-(global-set-key (kbd "C-c e")
-                (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
+(global-set-key (kbd "C-c e") #'init-open-init.el)
 
 (global-set-key (kbd "C-c f") #'find-file-at-point)
 
