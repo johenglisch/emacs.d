@@ -52,7 +52,7 @@
 
 (setq package-selected-packages
       '(flx-ido magit projectile smex
-        flycheck paredit yasnippet
+        flycheck multiple-cursors paredit yasnippet
         cider fountain-mode json-mode markdown-mode
         gnu-elpa-keyring-update))
 
@@ -325,6 +325,14 @@
 
 (when (package-installed-p 'magit)
   (global-set-key (kbd "C-c g") #'magit-status))
+
+(when (require 'multiple-cursors nil t)
+  (global-set-key (kbd "C-c p") #'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c n") #'mc/mark-next-like-this)
+  (global-set-key (kbd "C-c P") #'mc/skip-to-previous-like-this)
+  (global-set-key (kbd "C-c N") #'mc/skip-to-next-like-this)
+  (global-set-key (kbd "C-c m") #'mc/edit-lines)
+  (global-set-key (kbd "C-c M") #'mc/mark-all-like-this))
 
 (when (package-installed-p 'projectile)
   (global-set-key (kbd "C-c p") #'projectile-command-map))
