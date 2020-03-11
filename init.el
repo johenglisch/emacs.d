@@ -36,6 +36,9 @@
 (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" init-tmp-dir))
 (setq projectile-cache-file          (expand-file-name "projectile.cache" init-tmp-dir))
 (setq mc/list-file                   (expand-file-name "mc-lists.el" init-tmp-dir))
+(setq transient-levels-file          (expand-file-name "transient/levels.el" init-tmp-dir))
+(setq transient-values-file          (expand-file-name "transient/values.el" init-tmp-dir))
+(setq transient-history-file         (expand-file-name "transient/history.el" init-tmp-dir))
 
 (if (eq system-type 'windows-nt)
     (setq default-directory "~/"))
