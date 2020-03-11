@@ -35,6 +35,7 @@
 (setq smex-save-file                 (expand-file-name "smex-items" init-tmp-dir))
 (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" init-tmp-dir))
 (setq projectile-cache-file          (expand-file-name "projectile.cache" init-tmp-dir))
+(setq mc/list-file                   (expand-file-name "mc-lists.el" init-tmp-dir))
 
 (if (eq system-type 'windows-nt)
     (setq default-directory "~/"))
