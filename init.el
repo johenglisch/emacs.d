@@ -1,5 +1,3 @@
-(require 'cl)
-
 ;;; Custom Vars ------------------------------------------------------
 
 (custom-set-variables
@@ -91,12 +89,12 @@
 (setq frame-title-format "%b – Emacs")
 (setq frame-resize-pixelwise t)
 
-(cl-case system-type
-  ('gnu/linux  (set-frame-font "Hack-10" nil t))
-  ('windows-nt (set-frame-font "Consolas-12" nil t)))
+(when (eq system-type 'gnu/linux)
+  (set-frame-font "DejaVuSansMono-12" nil t))
 
 (when (eq system-type 'windows-nt)
-    (setq inhibit-compacting-font-caches t))
+  (setq inhibit-compacting-font-caches t)
+  (set-frame-font "Consolas-12" nil t))
 
 (global-font-lock-mode 0)
 (add-hook 'term-mode-hook #'font-lock-mode)
