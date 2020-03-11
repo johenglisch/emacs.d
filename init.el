@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;;; Custom Vars ------------------------------------------------------
 
 (custom-set-variables
