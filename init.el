@@ -315,10 +315,10 @@
 
 ;; Plugins
 
-(global-set-key (kbd "C-c l") #'org-store-link)
-(global-set-key (kbd "C-c c") #'org-capture)
-(global-set-key (kbd "C-c a") #'org-agenda)
-(global-set-key (kbd "C-c b") #'org-iswitchb)
+(global-set-key (kbd "C-c o l") #'org-store-link)
+(global-set-key (kbd "C-c o c") #'org-capture)
+(global-set-key (kbd "C-c o a") #'org-agenda)
+(global-set-key (kbd "C-c o b") #'org-iswitchb)
 
 ;; for some reason, <menu> is called <apps> on windows...
 (unless (package-installed-p 'smex)
@@ -334,9 +334,9 @@
   (global-set-key (kbd "C-c g") #'magit-status))
 
 (when (require 'multiple-cursors nil t)
-  (global-set-key (kbd "C-c p") #'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c l") #'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c n") #'mc/mark-next-like-this)
-  (global-set-key (kbd "C-c P") #'mc/skip-to-previous-like-this)
+  (global-set-key (kbd "C-c L") #'mc/skip-to-previous-like-this)
   (global-set-key (kbd "C-c N") #'mc/skip-to-next-like-this)
   (global-set-key (kbd "C-c m") #'mc/edit-lines)
   (global-set-key (kbd "C-c M") #'mc/mark-all-like-this))
