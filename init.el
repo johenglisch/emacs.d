@@ -57,6 +57,7 @@
 (setq package-selected-packages
       '(flx-ido magit projectile smex
         flycheck multiple-cursors paredit yasnippet
+        auctex auctex-latexmk
         cider fountain-mode json-mode markdown-mode
         gnu-elpa-keyring-update))
 
@@ -239,6 +240,9 @@
       (require 'tex-mik))
 
   (add-hook 'TeX-mode-hook #'font-lock-mode)
+
+  (setq reftex-plug-into-AUCTeX t)
+  (add-hook 'LaTeX-mode-hook #'turn-on-reftex)
 
   (when (require 'auctex-latexmk nil t)
     (auctex-latexmk-setup)))
