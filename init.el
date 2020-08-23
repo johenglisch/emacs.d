@@ -239,7 +239,9 @@
   (if (eq system-type 'windows-nt)
       (require 'tex-mik))
 
+  (setq reftex-plug-into-AUCTeX t)
   (add-hook 'TeX-mode-hook #'font-lock-mode)
+  (add-hook 'TeX-mode-hook #'turn-on-reftex)
 
   (setq reftex-plug-into-AUCTeX t)
   (add-hook 'LaTeX-mode-hook #'turn-on-reftex)
