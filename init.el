@@ -94,8 +94,9 @@
 
 (column-number-mode t)
 
-(when window-system
-  (load-theme 'deeper-blue))
+(load-theme (if window-system
+                'deeper-blue
+              'wheatgrass))
 
 (setq frame-title-format "%b – Emacs")
 (setq frame-resize-pixelwise t)
