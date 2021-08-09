@@ -7,6 +7,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("0f2f1feff73a80556c8c228396d76c1a0342eb4eefd00f881b91e26a14c5b62a" default))
  '(fill-column 79))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -54,10 +56,21 @@
 (package-initialize)
 
 (setq package-selected-packages
-      '(flx-ido magit projectile smex
+      '(arc-dark-theme                  ; goes well with arc (obviously)
+        ayu-theme                       ; reeeally vibrant shade of dark blue
+        autumn-light-theme              ; not the worst shade of beige
+        gotham-theme                    ; very dark night-ey
+        green-phosphor-theme            ; really cool effect
+        lavender-theme                  ; might be just a tad too purple
+        lush-theme                      ; might replace 'wombat for me
+        molokai-theme                   ; like the grey and occasional purple
+        monokai-theme                   ; a bit brown but okay
+        oceanic-theme                   ; nice dark teal
+        plan9-theme                     ; nice but maybe a bit low on contrast
+        professional-theme              ; more 
+        flx-ido magit projectile smex
         flycheck multiple-cursors paredit yasnippet
-        auctex auctex-latexmk
-        cider fountain-mode json-mode markdown-mode
+        auctex auctex-latexmk cider elpher fountain-mode json-mode markdown-mode
         gnu-elpa-keyring-update))
 
 (if (version< emacs-version "26.3")
@@ -93,19 +106,28 @@
 
 (column-number-mode t)
 
+(add-to-list 'default-frame-alist '(width . 83))
+(add-to-list 'default-frame-alist '(height . 30))
+
 (load-theme (if window-system
-                'deeper-blue
+                (if (package-installed-p 'lush-theme)
+                    'lush
+                  'wombat)
               'wheatgrass))
 
 (setq frame-title-format "%b – Emacs")
 (setq frame-resize-pixelwise t)
 
 (when (eq system-type 'gnu/linux)
-  (set-frame-font "DejaVuSansMono-12" nil t))
+  (set-frame-font "monospace-12" nil t)
+  (set-fontset-font "fontset-default" 'han "Source Han Sans CN Normal")
+  (set-fontset-font "fontset-default" 'cjk-misc "Source Han Sans CN Normal")
+  (set-fontset-font "fontset-default" 'kana "Source Han Sans JP Normal"))
 
 (when (eq system-type 'windows-nt)
   (setq inhibit-compacting-font-caches t)
   (set-frame-font "Consolas-12" nil t))
+
 
 (global-font-lock-mode 0)
 (add-hook 'term-mode-hook #'font-lock-mode)
@@ -116,7 +138,7 @@
 (add-hook 'fountain-mode-hook #'font-lock-mode)
 (add-hook 'org-mode-hook #'font-lock-mode)
 (add-hook 'magit-mode-hook #'font-lock-mode)
-
+(add-hook 'gud-mode-hook #'font-lock-mode)
 
 ;;; Editing ----------------------------------------------------------
 
@@ -124,6 +146,10 @@
 (setq auto-save-default nil)
 
 (setq-default c-basic-offset 4)
+(setq-default c-default-style
+              '((java-mode . "java")
+                (akw-mode . "awk")
+                (other . "linux")))
 (setq-default indent-tabs-mode nil)
 
 (when (eq system-type 'windows-nt)
