@@ -345,6 +345,8 @@
 
 (global-set-key (kbd "C-c t") #'term)
 
+(global-set-key (kbd "C-c w") #'make-frame)
+
 ;; Plugins
 
 (global-set-key (kbd "C-c o l") #'org-store-link)
