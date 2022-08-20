@@ -119,10 +119,10 @@
 (setq frame-resize-pixelwise t)
 
 (when (eq system-type 'gnu/linux)
-  (set-frame-font "monospace-12" nil t)
-  (set-fontset-font "fontset-default" 'han "Source Han Sans CN Normal")
-  (set-fontset-font "fontset-default" 'cjk-misc "Source Han Sans CN Normal")
-  (set-fontset-font "fontset-default" 'kana "Source Han Sans JP Normal"))
+  (set-frame-font "Monospace-12" nil t)
+  (set-fontset-font "fontset-default" 'han "Source Han Sans Normal")
+  (set-fontset-font "fontset-default" 'cjk-misc "Source Han Sans Normal")
+  (set-fontset-font "fontset-default" 'kana "Source Han Sans Normal"))
 
 (when (eq system-type 'windows-nt)
   (setq inhibit-compacting-font-caches t)
