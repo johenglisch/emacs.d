@@ -43,6 +43,8 @@
 (setq transient-levels-file          (expand-file-name "transient/levels.el" init-tmp-dir))
 (setq transient-values-file          (expand-file-name "transient/values.el" init-tmp-dir))
 (setq transient-history-file         (expand-file-name "transient/history.el" init-tmp-dir))
+(setq kkc-init-file-name             (expand-file-name "kkcrc" init-tmp-dir))
+
 
 (if (eq system-type 'windows-nt)
     (setq default-directory "~/"))
