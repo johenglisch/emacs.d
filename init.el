@@ -149,7 +149,8 @@
 (setq-default c-default-style
               '((java-mode . "java")
                 (akw-mode . "awk")
-                (other . "linux")))
+                (other . "bsd")))
+(setq c-basic-offset 4)
 (setq-default indent-tabs-mode nil)
 
 (when (eq system-type 'windows-nt)
