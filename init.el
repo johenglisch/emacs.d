@@ -158,6 +158,8 @@
 (require 'saveplace)
 (setq-default save-place t)
 
+(setq completion-ignore-case t)
+
 
 ;;; Terminal Emulator ------------------------------------------------
 
