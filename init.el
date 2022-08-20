@@ -170,7 +170,10 @@
           #'comint-watch-for-password-prompt nil t)
 
 (when (eq system-type 'gnu/linux)
-  (setq explicit-shell-file-name "/bin/zsh")
+  (setq explicit-shell-file-name
+        (or (executable-find "zsh")
+            (executable-find "bash")
+            "/bin/sh"))
   (setq shell-file-name explicit-shell-file-name))
 
 
