@@ -69,6 +69,7 @@
         plan9-theme                     ; nice but maybe a bit low on contrast
         professional-theme              ; more 
         flx-ido magit projectile smex
+        command-log-mode
         flycheck multiple-cursors paredit yasnippet
         auctex auctex-latexmk cider elpher fountain-mode json-mode markdown-mode
         gnu-elpa-keyring-update))
@@ -178,6 +179,18 @@
 
 
 ;;; Minor Modes ------------------------------------------------------
+
+;; Command-log-mode
+
+(setq command-log-mode-key-binding-open-log (kbd "C-c d"))
+(require 'command-log-mode nil t)
+;; Reminder: to activate run:
+;;  * M-x global-command-log-mode
+;;  * M-x clm/command-log-buffer
+;; TODO Make simple key-bindable command that
+;;  1. starts global command log mode,
+;;  2. opens a new window that contains nothing but the command log buffer
+
 
 ;; Smex
 
