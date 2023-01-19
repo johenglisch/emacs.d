@@ -286,6 +286,9 @@
   (if (eq system-type 'windows-nt)
       (require 'tex-mik))
 
+  (setq bibtex-align-at-equal-sign nil)
+  (setq bibtex-comma-after-last-field t)
+
   (setq reftex-plug-into-AUCTeX t)
   (add-hook 'TeX-mode-hook #'font-lock-mode)
   (add-hook 'TeX-mode-hook #'turn-on-reftex)
@@ -295,6 +298,11 @@
 
   (when (require 'auctex-latexmk nil t)
     (auctex-latexmk-setup)))
+
+;;; R
+
+(when (require 'ess-r-mode nil t)
+  (setq ess-indent-with-fancy-comments nil))
 
 
 ;;; Org-mode Settings ------------------------------------------------
@@ -367,6 +375,8 @@
 (global-set-key (kbd "C-c t") #'term)
 
 (global-set-key (kbd "C-c w") #'make-frame)
+
+(global-set-key (kbd "C-c c") #'fixup-whitespace)
 
 ;; Plugins
 
