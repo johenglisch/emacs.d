@@ -8,7 +8,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("0f2f1feff73a80556c8c228396d76c1a0342eb4eefd00f881b91e26a14c5b62a" default))
+   '("7680e0d0fe93475fcdc514ae4df428245ab30c57114a753701e4fc09a15c949b" default))
  '(fill-column 79))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -44,6 +44,7 @@
 (setq transient-values-file          (expand-file-name "transient/values.el" init-tmp-dir))
 (setq transient-history-file         (expand-file-name "transient/history.el" init-tmp-dir))
 (setq kkc-init-file-name             (expand-file-name "kkcrc" init-tmp-dir))
+(setq nov-save-place-file            (expand-file-name "nov-places" init-tmp-dir))
 
 
 (if (eq system-type 'windows-nt)
@@ -58,23 +59,19 @@
 (package-initialize)
 
 (setq package-selected-packages
-      '(arc-dark-theme                  ; goes well with arc (obviously)
-        ayu-theme                       ; reeeally vibrant shade of dark blue
-        autumn-light-theme              ; not the worst shade of beige
-        gotham-theme                    ; very dark night-ey
-        green-phosphor-theme            ; really cool effect
-        lavender-theme                  ; might be just a tad too purple
-        lush-theme                      ; might replace 'wombat for me
-        molokai-theme                   ; like the grey and occasional purple
-        monokai-theme                   ; a bit brown but okay
-        oceanic-theme                   ; nice dark teal
-        plan9-theme                     ; nice but maybe a bit low on contrast
-        professional-theme              ; more 
-        flx-ido magit projectile smex
-        command-log-mode
-        flycheck multiple-cursors paredit yasnippet
-        auctex auctex-latexmk cider elpher fountain-mode json-mode markdown-mode
-        gnu-elpa-keyring-update))
+      (let ((packages '(ayu-theme autumn-light-theme green-phosphor-theme
+                        lavender-theme lush-theme professional-theme
+                        flx-ido magit projectile smex
+                        command-log-mode
+                        flycheck multiple-cursors paredit yasnippet
+                        auctex auctex-latexmk csv-mode cider elpher
+                        fountain-mode json-mode markdown-mode nov slime
+                        geiser geiser-chez geiser-guile
+                        gnu-elpa-keyring-update)))
+        ;; one of the emacs installations I work on is too old for elpher...
+        (if (version< emacs-version "27.1")
+            packages
+          (cons 'elpher packages))))
 
 (if (version< emacs-version "26.3")
     (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
@@ -83,10 +80,12 @@
 ;;; Helper Functions -------------------------------------------------
 
 (defun init-byte-compile-current ()
+  "Compile current elisp file."
   (interactive)
   (byte-compile-file (buffer-file-name)))
 
 (defun init-open-init.el ()
+  "Open init.el file in the current window."
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
@@ -267,6 +266,18 @@
   (autoload 'markdown-mode "markdown-mode" "Major mode for Markdown files" t)
   (add-hook 'markdown-mode-hook #'font-lock-mode))
 
+;; Nov
+
+(when (package-installed-p 'nov)
+  (setq nov-text-width 80)
+
+  ;; (defun my-nov-font-setup ()
+  ;;   (face-remap-add-relative 'variable-pitch :family "Liberation Serif"
+  ;;                            :height 1.0))
+  ;; (add-hook 'nov-mode-hook 'my-nov-font-setup)
+ 
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode)))
+
 ;; Haskell-mode
 
 (when (package-installed-p 'haskell-mode)
@@ -304,6 +315,19 @@
 (when (require 'ess-r-mode nil t)
   (setq ess-indent-with-fancy-comments nil))
 
+;; Racket-mode
+
+(when (package-installed-p 'racket-mode)
+  (require 'racket-xp)
+  (add-hook 'racket-mode-hook #'racket-xp-mode)
+  (add-hook 'racket-mode-hook #'paredit-mode))
+
+;; Slime/sly
+
+(when (or (package-installed-p 'slime)
+          (package-installed-p 'sly))
+  (setq inferior-lisp-program "sbcl"))
+
 
 ;;; Org-mode Settings ------------------------------------------------
 
@@ -322,8 +346,8 @@
 
 (when (file-directory-p init-agenda-dir)
   (setq org-agenda-files
-        `(,(expand-file-name "todo.org" init-agenda-dir)
-          ,(expand-file-name "termine.org" init-agenda-dir)))
+        (list (expand-file-name "todo.org" init-agenda-dir)
+              (expand-file-name "termine.org" init-agenda-dir)))
 
   (setq org-archive-location
         (concat (file-name-as-directory init-agenda-dir)
