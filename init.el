@@ -64,14 +64,15 @@
                         flx-ido magit projectile smex
                         command-log-mode
                         flycheck multiple-cursors paredit yasnippet
-                        auctex auctex-latexmk csv-mode cider elpher
-                        fountain-mode json-mode markdown-mode nov slime
-                        geiser geiser-chez geiser-guile
-                        gnu-elpa-keyring-update)))
-        ;; one of the emacs installations I work on is too old for elpher...
+                        auctex auctex-latexmk cider elpy ess fountain-mode
+                        json-mode markdown-mode nov slime geiser geiser-chez
+                        geiser-guile
+                        gnu-elpa-keyring-update))
+            ;; one of the emacs installations I work on is too old for these...
+            (picky-packages '(csv-mode elpher)))
         (if (version< emacs-version "27.1")
             packages
-          (cons 'elpher packages))))
+          (append picky-packages packages))))
 
 (if (version< emacs-version "26.3")
     (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
