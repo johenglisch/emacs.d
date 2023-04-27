@@ -165,7 +165,7 @@
 (setq-default c-basic-offset 4)
 (setq-default c-default-style
               '((java-mode . "java")
-                (akw-mode . "awk")
+                (awk-mode . "awk")
                 (other . "bsd")))
 (setq c-basic-offset 4)
 (setq-default indent-tabs-mode nil)
