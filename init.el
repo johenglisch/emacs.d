@@ -113,19 +113,33 @@
 (add-to-list 'default-frame-alist '(height . 30))
 
 (load-theme (if window-system
-                (if (package-installed-p 'lush-theme)
-                    'lush
-                  'wombat)
+                'wheatgrass
               'wheatgrass))
 
 (setq frame-title-format "%b – Emacs")
 (setq frame-resize-pixelwise t)
 
+
+(defun init-set-font-fallback (frame)
+  (when (display-graphic-p frame)
+    (set-fontset-font t 'han "Source Han Sans Normal" frame 'prepend)
+    (set-fontset-font t 'cjk-misc "Source Han Sans Normal" frame 'preprend)
+    (set-fontset-font t 'kana "Source Han Sans Normal" frame 'prepend)
+    (set-fontset-font t 'shavian "Fairfax HD" frame 'prepend)))
+
 (when (eq system-type 'gnu/linux)
-  (set-frame-font "Monospace-12" nil t)
-  (set-fontset-font "fontset-default" 'han "Source Han Sans Normal")
-  (set-fontset-font "fontset-default" 'cjk-misc "Source Han Sans Normal")
-  (set-fontset-font "fontset-default" 'kana "Source Han Sans Normal"))
+  ;; (set-frame-font "Monospace-12" nil t)
+  ;; (set-frame-font "Anonymous Pro-14" nil t)
+  (add-to-list 'initial-frame-alist '(font . "Anonymous Pro-14"))
+  (add-to-list 'default-frame-alist '(font . "Anonymous Pro-14"))
+
+  (cond ((daemonp)
+         (add-hook 'after-make-frame-functions
+                   (lambda (frame)
+                     (select-frame frame)
+                     (init-set-font-fallback frame))))
+        ((display-graphic-p)
+         (init-set-font-fallback nil))))
 
 (when (eq system-type 'windows-nt)
   (setq inhibit-compacting-font-caches t)
@@ -247,6 +261,12 @@
 ;; Elisp
 
 (add-hook 'emacs-lisp-mode-hook #'eldoc-mode)
+
+(define-key emacs-lisp-mode-map (kbd "C-c C-e") #'eval-print-last-sexp)
+;; scratch buffer doesn't pick up the changed mode map
+(with-current-buffer "*scratch*"
+  (local-set-key (kbd "C-c C-e") #'eval-print-last-sexp))
+
 
 ;; Clojure
 
@@ -392,6 +412,26 @@
 ;;; Key Bindings -----------------------------------------------------
 
 ;; General
+
+(when (daemonp)
+  (defun init-modified-buffer-p (buf)
+    (and (buffer-file-name buf)
+         (buffer-modified-p buf)))
+
+  (defun init-save-buffers-close-frame (&optional frame)
+    (interactive)
+    (save-some-buffers nil t)
+    (when (or (not (memq t (mapcar #'init-modified-buffer-p (buffer-list))))
+              (yes-or-no-p "Modified buffers exist; close frame anyway? "))
+      (delete-frame frame t)))
+
+  (defun init-handle-close-button (event)
+    (interactive "e")
+    (let (frame (posn-window (event-start event)))
+      (init-save-buffers-close-frame frame)))
+
+  (define-key special-event-map [delete-frame] #'init-handle-close-button)
+  (global-set-key (kbd "C-x C-c") #'init-save-buffers-close-frame))
 
 (global-set-key (kbd "C-c e") #'init-open-init.el)
 
