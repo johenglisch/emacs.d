@@ -93,7 +93,7 @@
 
 ;;; Appearance -------------------------------------------------------
 
-(defalias 'yes-or-no-p 'y-or-n-p)
+(defalias 'yes-or-no-p #'y-or-n-p)
 
 (setq eol-mnemonic-dos "\\")
 (setq eol-mnemonic-unix ":")
@@ -237,7 +237,7 @@
     "paredit" "Turn on pseudo-structural editing in Lisp code" t)
 
   (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-  (add-hook 'eval-expression-minibuffer #'enable-paredit-mode)
+  ;;(add-hook 'eval-expression-minibuffer #'enable-paredit-mode)
   ;;(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
   (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
   (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
@@ -362,8 +362,7 @@
 
 ;; Agenda
 
-(defvar init-agenda-dir nil)
-(setq init-agenda-dir "~/org/")
+(defvar init-agenda-dir "~/org/")
 
 (setq org-log-done 'time)
 
