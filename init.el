@@ -119,6 +119,14 @@
 (setq frame-title-format "%b – Emacs")
 (setq frame-resize-pixelwise t)
 
+(when (eq system-type 'gnu/linux)
+  (add-to-list 'initial-frame-alist '(font . "Anonymous Pro-14"))
+  (add-to-list 'default-frame-alist '(font . "Anonymous Pro-14")))
+
+(when (eq system-type 'windows-nt)
+  (setq inhibit-compacting-font-caches t)
+  (add-to-list 'initial-frame-alist '(font . "Consolas-12"))
+  (add-to-list 'default-frame-alist '(font . "Consolas-12")))
 
 (defun init-set-font-fallback (frame)
   (when (display-graphic-p frame)
@@ -127,24 +135,12 @@
     (set-fontset-font t 'kana "Source Han Sans Normal" frame 'prepend)
     (set-fontset-font t 'shavian "Fairfax HD" frame 'prepend)))
 
-(when (eq system-type 'gnu/linux)
-  ;; (set-frame-font "Monospace-12" nil t)
-  ;; (set-frame-font "Anonymous Pro-14" nil t)
-  (add-to-list 'initial-frame-alist '(font . "Anonymous Pro-14"))
-  (add-to-list 'default-frame-alist '(font . "Anonymous Pro-14"))
-
-  (cond ((daemonp)
-         (add-hook 'after-make-frame-functions
-                   (lambda (frame)
-                     (select-frame frame)
-                     (init-set-font-fallback frame))))
-        ((display-graphic-p)
-         (init-set-font-fallback nil))))
-
-(when (eq system-type 'windows-nt)
-  (setq inhibit-compacting-font-caches t)
-  (set-frame-font "Consolas-12" nil t))
-
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (select-frame frame)
+                (init-set-font-fallback frame)))
+  (init-set-font-fallback nil))
 
 (global-font-lock-mode 0)
 (add-hook 'term-mode-hook #'font-lock-mode)
@@ -156,6 +152,7 @@
 (add-hook 'org-mode-hook #'font-lock-mode)
 (add-hook 'magit-mode-hook #'font-lock-mode)
 (add-hook 'gud-mode-hook #'font-lock-mode)
+
 
 ;;; Editing ----------------------------------------------------------
 
