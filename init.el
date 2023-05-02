@@ -437,7 +437,8 @@
 
 (global-set-key (kbd "C-c t") #'term)
 
-(global-set-key (kbd "C-c w") #'make-frame)
+(global-set-key (kbd "C-c w w") #'make-frame)
+(global-set-key (kbd "C-c w 1") #'delete-other-frames)
 
 (global-set-key (kbd "C-c c") #'fixup-whitespace)
 
