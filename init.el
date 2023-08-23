@@ -20,11 +20,10 @@
 
 ;;; Folders ----------------------------------------------------------
 
-(defvar init-tmp-dir nil)
-(setq init-tmp-dir
-      (if (eq system-type 'windows-nt)
-          "~/_cache/emacs/"
-        "~/.cache/emacs/"))
+(defvar init-tmp-dir
+  (if (eq system-type 'windows-nt)
+      "~/_cache/emacs/"
+    "~/.cache/emacs/"))
 
 (unless (file-exists-p init-tmp-dir)
   (make-directory init-tmp-dir t))
@@ -45,7 +44,8 @@
 (setq transient-history-file         (expand-file-name "transient/history.el" init-tmp-dir))
 (setq kkc-init-file-name             (expand-file-name "kkcrc" init-tmp-dir))
 (setq nov-save-place-file            (expand-file-name "nov-places" init-tmp-dir))
-
+(setq racket-image-cache-dir         (expand-file-name "racket-image-cache/" init-tmp-dir))
+(setq racket-repl-history-directory  (expand-file-name "racket-repl-history/" init-tmp-dir))
 
 (if (eq system-type 'windows-nt)
     (setq default-directory "~/"))
@@ -55,6 +55,7 @@
 
 (require 'package)
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("nongnu" . "https://elpa.nongnu.org/nongnu/")
                          ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
@@ -62,11 +63,11 @@
       (let ((packages '(ayu-theme autumn-light-theme green-phosphor-theme
                         lavender-theme lush-theme professional-theme
                         flx-ido magit projectile smex
-                        command-log-mode
+                        command-log-mode exec-path-from-shell
                         flycheck multiple-cursors paredit yasnippet
                         auctex auctex-latexmk cider elpy ess fountain-mode
-                        json-mode markdown-mode nov slime geiser geiser-chez
-                        geiser-guile
+                        json-mode julia-mode julia-repl markdown-mode nov slime
+                        geiser geiser-chez geiser-guile racket-mode
                         gnu-elpa-keyring-update))
             ;; one of the emacs installations I work on is too old for these...
             (picky-packages '(csv-mode elpher)))
@@ -90,6 +91,14 @@
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
+(defun init-pop-out-window ()
+   "Pop out the current window into a new frame."
+   (interactive)
+   (if (< (length (window-list)) 2)
+       (message "Frame has only one window.")
+     (let ((current-window (selected-window)))
+       (and (make-frame)
+            (delete-window current-window)))))
 
 ;;; Appearance -------------------------------------------------------
 
@@ -142,16 +151,21 @@
                 (init-set-font-fallback frame)))
   (init-set-font-fallback nil))
 
+(setq font-lock-maximum-decoration 0)
 (global-font-lock-mode 0)
-(add-hook 'term-mode-hook #'font-lock-mode)
-(add-hook 'tex-mode-hook #'font-lock-mode)
-(add-hook 'rst-mode-hook #'font-lock-mode)
-(add-hook 'ag-mode-hook #'font-lock-mode)
-(add-hook 'cider-repl-mode-hook #'font-lock-mode)
-(add-hook 'fountain-mode-hook #'font-lock-mode)
-(add-hook 'org-mode-hook #'font-lock-mode)
-(add-hook 'magit-mode-hook #'font-lock-mode)
-(add-hook 'gud-mode-hook #'font-lock-mode)
+(dolist (mode-hook '(ag-mode-hook
+                     cider-repl-mode-hook
+                     fountain-mode-hook
+                     gud-mode-hook
+                     magit-mode-hook
+                     markdown-mode-hook
+                     org-mode-hook
+                     racket-repl-mode-hook
+                     rst-mode-hook
+                     term-mode-hook
+                     TeX-mode-hook
+                     tex-mode-hook))
+  (add-hook mode-hook #'font-lock-mode))
 
 
 ;;; Editing ----------------------------------------------------------
@@ -174,6 +188,13 @@
 (setq-default save-place t)
 
 (setq completion-ignore-case t)
+
+
+;;; Prepare PATH -----------------------------------------------------
+
+(when (and (not (eq system-type 'windows-nt))
+           (require 'exec-path-from-shell nil t))
+  (exec-path-from-shell-initialize))
 
 
 ;;; Terminal Emulator ------------------------------------------------
@@ -227,27 +248,35 @@
     '(setq flycheck-display-errors-function
            #'flycheck-pos-tip-error-messages)))
 
+;; God-mode
+
+(when (require 'god-mode nil t)
+  (defun init-god-mode-update-cursor-type ()
+    (let ((cursor (if (or god-local-mode
+                          buffer-read-only)
+                      'box
+                    'bar)))
+      (setq cursor-type cursor)))
+  (add-hook 'post-command-hook #'init-god-mode-update-cursor-type))
+
 ;; Paredit
 
 (when (package-installed-p 'paredit)
   (autoload 'enable-paredit-mode
     "paredit" "Turn on pseudo-structural editing in Lisp code" t)
 
-  (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-  ;;(add-hook 'eval-expression-minibuffer #'enable-paredit-mode)
-  ;;(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
-  (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
-  (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-  (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
-  (add-hook 'clojure-mode-hook          #'enable-paredit-mode)
-  ;;(add-hook 'cider-repl-mode-hook       #'enable-paredit-mode)
-  ;;(add-hook 'geiser-repl-mode-hook      #'enable-paredit-mode)
-  )
+  (dolist (mode-hook '(emacs-lisp-mode-hook
+                       lisp-mode-hook
+                       lisp-interaction-mode-hook
+                       racket-mode-hook
+                       scheme-mode-hook
+                       clojure-mode-hook))
+    (add-hook mode-hook #'enable-paredit-mode)))
 
 ;; Projectile
 
 (when (package-installed-p 'projectile)
-  (projectile-global-mode))
+  (projectile-mode))
 
 ;; Yasnippet
 
@@ -276,6 +305,12 @@
   (setq cider-repl-pop-to-buffer-on-connect nil)
   (setq cider-repl-display-help-banner nil))
 
+;; Julia-mode
+
+(when (and (require 'julia-mode nil t)
+           (require 'julia-repl nil t))
+  (add-hook 'julia-mode-hook #'julia-repl-mode))
+
 ;; Markdown-mode
 
 (when (package-installed-p 'markdown-mode)
@@ -283,8 +318,7 @@
       (setq markdown-command "/usr/bin/env markdown"))
 
   (add-to-list 'auto-mode-alist '("\\.txt" . markdown-mode))
-  (autoload 'markdown-mode "markdown-mode" "Major mode for Markdown files" t)
-  (add-hook 'markdown-mode-hook #'font-lock-mode))
+  (autoload 'markdown-mode "markdown-mode" "Major mode for Markdown files" t))
 
 ;; Nov
 
@@ -295,7 +329,7 @@
   ;;   (face-remap-add-relative 'variable-pitch :family "Liberation Serif"
   ;;                            :height 1.0))
   ;; (add-hook 'nov-mode-hook 'my-nov-font-setup)
- 
+
   (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode)))
 
 ;; Haskell-mode
@@ -321,10 +355,7 @@
   (setq bibtex-comma-after-last-field t)
 
   (setq reftex-plug-into-AUCTeX t)
-  (add-hook 'TeX-mode-hook #'font-lock-mode)
   (add-hook 'TeX-mode-hook #'turn-on-reftex)
-
-  (setq reftex-plug-into-AUCTeX t)
   (add-hook 'LaTeX-mode-hook #'turn-on-reftex)
 
   (when (require 'auctex-latexmk nil t)
@@ -337,10 +368,10 @@
 
 ;; Racket-mode
 
-(when (package-installed-p 'racket-mode)
+(when (require 'racket-mode nil t)
   (require 'racket-xp)
-  (add-hook 'racket-mode-hook #'racket-xp-mode)
-  (add-hook 'racket-mode-hook #'paredit-mode))
+  (define-key racket-repl-mode-map (kbd "C-c C-q") #'racket-repl-exit)
+  (add-hook 'racket-mode-hook #'racket-xp-mode))
 
 ;; Slime/sly
 
@@ -439,6 +470,7 @@
 
 (global-set-key (kbd "C-c w w") #'make-frame)
 (global-set-key (kbd "C-c w 1") #'delete-other-frames)
+(global-set-key (kbd "C-c w p") #'init-pop-out-window)
 
 (global-set-key (kbd "C-c c") #'fixup-whitespace)
 
@@ -472,3 +504,9 @@
 
 (when (package-installed-p 'projectile)
   (global-set-key (kbd "C-c p") #'projectile-command-map))
+
+(when (package-installed-p 'god-mode)
+  ;; get in with C-c c
+  (global-set-key (kbd "C-c c") #'god-local-mode)
+  ;; get out with escape
+  (define-key god-local-mode-map (kbd "<escape>") #'god-local-mode))
