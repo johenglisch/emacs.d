@@ -438,6 +438,24 @@
                           ("sentend" "\\@" nil "" "" "" "")))
 
 
+;;; Input methods ----------------------------------------------------
+
+(require 'quail)
+(quail-set-keyboard-layout "pc102-de")
+
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
+
+(register-input-method
+ "english-shavian" "English" 'quail-use-package
+ "𐑠𐑷" "English input method for Shavian (Imperial)"
+ "shavian-input-method")
+
+(register-input-method
+ "english-shavian-qwerty" "English" 'quail-use-package
+ "𐑠𐑷(Q)" "English input method for Shavian (QWERTY)"
+ "shavian-input-method")
+
+
 ;;; Key Bindings -----------------------------------------------------
 
 ;; General
