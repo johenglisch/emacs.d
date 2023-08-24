@@ -364,7 +364,11 @@
 ;;; R
 
 (when (require 'ess-r-mode nil t)
-  (setq ess-indent-with-fancy-comments nil))
+  (setq ess-indent-with-fancy-comments nil)
+  (setq ess-use-eldoc t)
+  (defun init-setup-ess ()
+    (ess-set-style 'RStudio 'quiet))
+  (add-hook 'ess-mode-hook #'init-setup-ess))
 
 ;; Racket-mode
 
