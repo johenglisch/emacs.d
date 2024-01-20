@@ -310,6 +310,7 @@
 
 (when (and (require 'julia-mode nil t)
            (require 'julia-repl nil t))
+  (setq julia-repl-pop-to-buffer nil)
   (add-hook 'julia-mode-hook #'julia-repl-mode))
 
 ;; Markdown-mode
