@@ -66,8 +66,9 @@
                         command-log-mode exec-path-from-shell
                         flycheck multiple-cursors paredit yasnippet
                         auctex auctex-latexmk cider elpy ess fountain-mode
-                        json-mode julia-mode julia-repl markdown-mode nov slime
-                        geiser geiser-chez geiser-guile racket-mode
+                        haskell-mode json-mode julia-mode julia-repl
+                        markdown-mode nov slime geiser geiser-chez geiser-guile
+                        racket-mode
                         gnu-elpa-keyring-update))
             ;; one of the emacs installations I work on is too old for these...
             (picky-packages '(csv-mode elpher)))
