@@ -494,6 +494,7 @@
 (global-set-key (kbd "C-c w 1") #'delete-other-frames)
 (global-set-key (kbd "C-c w p") #'init-pop-out-window)
 
+;; never used this
 (global-set-key (kbd "C-c c") #'fixup-whitespace)
 
 ;; Plugins
