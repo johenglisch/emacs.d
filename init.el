@@ -20,10 +20,14 @@
 
 ;;; Folders ----------------------------------------------------------
 
-(defvar init-tmp-dir
+(defvar init-cache-dir
   (if (eq system-type 'windows-nt)
-      "~/_cache/emacs/"
-    "~/.cache/emacs/"))
+      "~/_cache"
+    (or (getenv "XDG_CACHE_HOME")
+        "~/.cache")))
+
+(defvar init-tmp-dir
+  (expand-file-name "emacs" init-cache-dir))
 
 (unless (file-exists-p init-tmp-dir)
   (make-directory init-tmp-dir t))
@@ -69,6 +73,7 @@
                         haskell-mode json-mode julia-mode julia-repl
                         markdown-mode nov slime geiser geiser-chez geiser-guile
                         racket-mode
+                        lsp-mode lsp-julia
                         gnu-elpa-keyring-update))
             ;; one of the emacs installations I work on is too old for these...
             (picky-packages '(csv-mode elpher)))
@@ -215,6 +220,11 @@
 
 ;;; Minor Modes ------------------------------------------------------
 
+;; LSP-mode
+
+(when (require 'lsp-mode nil t)
+  (setq lsp-keymap-prefix "C-c v"))
+
 ;; Command-log-mode
 
 (setq command-log-mode-key-binding-open-log (kbd "C-c d"))
@@ -225,7 +235,6 @@
 ;; TODO Make simple key-bindable command that
 ;;  1. starts global command log mode,
 ;;  2. opens a new window that contains nothing but the command log buffer
-
 
 ;; Smex
 
@@ -311,7 +320,21 @@
 (when (and (require 'julia-mode nil t)
            (require 'julia-repl nil t))
   (setq julia-repl-pop-to-buffer nil)
-  (add-hook 'julia-mode-hook #'julia-repl-mode))
+  (add-hook 'julia-mode-hook #'julia-repl-mode)
+
+  (defvar init-julia-lsp-so (expand-file-name "lsp-julia/julia-lsp.so"
+                                              init-cache-dir))
+  ;; Recommendation according to https://github.com/gdkrmr/lsp-julia
+  ;;
+  ;; julia> using Pkg
+  ;; julia> Pkg.add("PackageCompiler")
+  ;; julia> using PackageCompiler
+  ;; julia> Pkg.add("LanguageServer")
+  ;; julia> create_sysimage(:LanguageServer, sysimage_path="/path/to/languageserver.so")
+  (setq lsp-julia-package-dir nil)
+  (setq lsp-julia-flags (list (format "-J%s" init-julia-lsp-so)))
+  (when (and (functionp 'lsp-mode) (require 'lsp-julia nil t))
+    (add-hook 'julia-mode-hook #'lsp-mode)))
 
 ;; Markdown-mode
 
