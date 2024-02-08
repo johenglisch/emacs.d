@@ -109,6 +109,29 @@
        (and (make-frame)
             (delete-window current-window)))))
 
+(defvar init-repos-folder (expand-file-name "repos" "~"))
+
+(defun init-goto-repo-folder ()
+  (interactive)
+  ;; TODO: move into a better location
+  ;; TODO: prompt for url (default to ‘thing-at-point’)
+  (let ((url (thing-at-point 'url)))
+    (if (null url)
+        (message "No url found at point.")
+      (let* ((suffix (replace-regexp-in-string
+                      ".*?\\([^:/]+/[^/]+\\)$" "\\1" url))
+             (folder (expand-file-name suffix init-repos-folder)))
+        (if (file-directory-p folder)
+            (dired folder)
+          (and (yes-or-no-p
+                (format "%s does not exist. Clone repo?" folder))
+               (= 0 (shell-command (format "git clone '%s' '%s'" url folder)))
+               (dired folder)))))))
+
+;; ;; TODO: function for setting this key bind to an interactive funtion
+;; (global-set-key (kbd "C-c d") #'init-goto-repo-folder)
+
+
 ;;; Appearance -------------------------------------------------------
 
 (defalias 'yes-or-no-p #'y-or-n-p)
