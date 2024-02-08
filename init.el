@@ -55,6 +55,8 @@
 (if (eq system-type 'windows-nt)
     (setq default-directory "~/"))
 
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
+
 
 ;;; Package Management -----------------------------------------------
 
@@ -472,8 +474,6 @@
 
 (require 'quail)
 (quail-set-keyboard-layout "pc102-de")
-
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
 (register-input-method
  "english-shavian" "English" 'quail-use-package
