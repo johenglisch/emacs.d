@@ -278,6 +278,22 @@
 (when (package-installed-p 'flx-ido)
   (flx-ido-mode))
 
+;; Flyspell
+
+(when (executable-find "hunspell")
+  ;; nicked from https://200ok.ch/posts/2020-08-22_setting_up_spell_checking_with_multiple_dictionaries.html
+  (setq ispell-personal-dictionary (expand-file-name "hunspell-personal-dict" init-cache-dir))
+  (unless (file-exists-p ispell-personal-dictionary)
+    (write-region "" nil ispell-personal-dictionary nil 0))
+
+  (with-eval-after-load "ispell"
+    (setq ispell-program-name "hunspell")
+    (setq ispell-dictionary "en_GB,de_DE")
+    (ispell-set-spellchecker-params)
+    (ispell-hunspell-add-multi-dic "en_GB,de_DE"))
+
+  (add-hook 'text-mode-hook #'flyspell-mode))
+
 ;; Flycheck
 
 (when (and (package-installed-p 'flycheck)
