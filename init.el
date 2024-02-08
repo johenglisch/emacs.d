@@ -586,10 +586,40 @@
   (global-set-key (kbd "C-c g") #'magit-status))
 
 (when (require 'multiple-cursors nil t)
-  (global-set-key (kbd "C-c l") #'mc/mark-previous-like-this)
-  (global-set-key (kbd "C-c n") #'mc/mark-next-like-this)
-  (global-set-key (kbd "C-c L") #'mc/skip-to-previous-like-this)
-  (global-set-key (kbd "C-c N") #'mc/skip-to-next-like-this)
+  (defun init-adhoc-cursor-spawning-mode ()
+    "Ad-hoc key map for spawning multiple cursors.
+
+I am lazy and don't want to hit my prefix key every bloody time I
+want to add a cursor so I just nicked the 'temporary key map'
+idea from ‘text-scale-adjust’.
+
+You invoke the mode with the following key presses, which invoke
+the corresponding functions from ‘multiple-cursors-mode’.
+
+C-c l ‘mc/mark-previous-like-this’
+C-c n ‘mc/mark-next-like-this’
+C-c L ‘mc/skip-to-previous-like-this’
+C-c N ‘mc/skip-to-next-like-this’
+
+Tehn you can keep just pressing l, n, L, or N to spawn more
+cursors using the same functions."
+    (interactive)
+    (let ((ev last-command-event)
+          (echo-keystrokes nil))
+      (cond ((eq ev ?l) (mc/mark-previous-like-this 1))
+            ((eq ev ?n) (mc/mark-next-like-this 1))
+            ((eq ev ?L) (mc/skip-to-previous-like-this))
+            ((eq ev ?N) (mc/skip-to-next-like-this)))
+      (set-transient-map
+       (let ((map (make-sparse-keymap)))
+         (dolist (key '("l" "n" "L" "N"))
+           (define-key map key #'init-adhoc-cursor-spawning-mode))
+         map)
+       nil nil
+       "Use %k to spawn more cursors.")))
+
+  (dolist (key-str '("C-c l" "C-c n" "C-c L" "C-c N"))
+    (global-set-key (kbd key-str) #'init-adhoc-cursor-spawning-mode))
   (global-set-key (kbd "C-c m") #'mc/edit-lines)
   (global-set-key (kbd "C-c M") #'mc/mark-all-like-this))
 
