@@ -187,6 +187,7 @@
 (global-font-lock-mode 0)
 (dolist (mode-hook '(ag-mode-hook
                      cider-repl-mode-hook
+                     dired-mode-hook
                      fountain-mode-hook
                      gud-mode-hook
                      magit-mode-hook
