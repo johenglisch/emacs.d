@@ -368,15 +368,16 @@
 
   (defvar init-julia-lsp-so (expand-file-name "lsp-julia/julia-lsp.so"
                                               init-cache-dir))
-  ;; Recommendation according to https://github.com/gdkrmr/lsp-julia
-  ;;
-  ;; julia> using Pkg
-  ;; julia> Pkg.add("PackageCompiler")
-  ;; julia> using PackageCompiler
-  ;; julia> Pkg.add("LanguageServer")
-  ;; julia> create_sysimage(:LanguageServer, sysimage_path="/path/to/languageserver.so")
-  (setq lsp-julia-package-dir nil)
-  (setq lsp-julia-flags (list (format "-J%s" init-julia-lsp-so)))
+  (when (file-exists-p init-julia-lsp-so)
+    ;; Recommendation according to https://github.com/gdkrmr/lsp-julia
+    ;;
+    ;; julia> using Pkg
+    ;; julia> Pkg.add("PackageCompiler")
+    ;; julia> using PackageCompiler
+    ;; julia> Pkg.add("LanguageServer")
+    ;; julia> create_sysimage(:LanguageServer, sysimage_path="/path/to/languageserver.so")
+    (setq lsp-julia-package-dir nil)
+    (setq lsp-julia-flags (list (format "-J%s" init-julia-lsp-so))))
   (when (and (functionp 'lsp-mode) (require 'lsp-julia nil t))
     (add-hook 'julia-mode-hook #'lsp-mode)))
 
