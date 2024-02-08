@@ -249,8 +249,9 @@
 
 ;; LSP-mode
 
-(when (require 'lsp-mode nil t)
-  (setq lsp-keymap-prefix "C-c v"))
+(when (package-installed-p 'lsp-mode)
+  (setq lsp-keymap-prefix "C-c v")
+  (require 'lsp-mode nil t))
 
 ;; Command-log-mode
 
