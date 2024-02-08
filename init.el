@@ -349,7 +349,6 @@
 (with-current-buffer "*scratch*"
   (local-set-key (kbd "C-c C-e") #'eval-print-last-sexp))
 
-
 ;; Clojure
 
 (when (package-installed-p 'cider)
