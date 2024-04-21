@@ -52,8 +52,8 @@
 (setq racket-image-cache-dir         (expand-file-name "racket-image-cache/" init-tmp-dir))
 (setq racket-repl-history-directory  (expand-file-name "racket-repl-history/" init-tmp-dir))
 
-(if (eq system-type 'windows-nt)
-    (setq default-directory "~/"))
+(when (eq system-type 'windows-nt)
+  (setq default-directory "~/"))
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
@@ -67,25 +67,18 @@
 (package-initialize)
 
 (setq package-selected-packages
-      (let ((packages '(ayu-theme autumn-light-theme green-phosphor-theme
-                        lavender-theme lush-theme professional-theme
-                        flx-ido magit projectile smex
-                        command-log-mode exec-path-from-shell
-                        flycheck multiple-cursors paredit yasnippet
-                        auctex auctex-latexmk cider elpy ess fountain-mode
-                        haskell-mode json-mode julia-mode julia-repl
-                        markdown-mode nov slime geiser geiser-chez geiser-guile
-                        racket-mode
-                        lsp-mode lsp-julia
-                        gnu-elpa-keyring-update))
-            ;; one of the emacs installations I work on is too old for these...
-            (picky-packages '(csv-mode elpher)))
-        (if (version< emacs-version "27.1")
-            packages
-          (append picky-packages packages))))
+      '(ayu-theme autumn-light-theme green-phosphor-theme lavender-theme
+        lush-theme professional-theme
+        flx-ido magit projectile smex
+        command-log-mode exec-path-from-shell
+        flycheck multiple-cursors paredit yasnippet
+        auctex auctex-latexmk cider csv-mode elpher ess fountain-mode
+        haskell-mode json-mode julia-mode julia-repl markdown-mode nov
+        slime geiser geiser-chez geiser-guile racket-mode
+        gnu-elpa-keyring-update))
 
-(if (version< emacs-version "26.3")
-    (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+;; (when (version< emacs-version "26.3")
+;;   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 
 ;;; Helper Functions -------------------------------------------------
@@ -358,6 +351,21 @@
   (setq cider-repl-pop-to-buffer-on-connect nil)
   (setq cider-repl-display-help-banner nil))
 
+;; Forth
+
+(autoload 'forth-mode "gforth.el")
+(setq auto-mode-alist (cons '("\\.fs\\'" . forth-mode)
+                            auto-mode-alist))
+
+(autoload 'forth-block-mode "gforth.el")
+(setq auto-mode-alist (cons '("\\.fb\\'" . forth-block-mode)
+                            auto-mode-alist))
+
+(defun init-gforth-setup ()
+  (setq forth-indent-level 2)
+  (define-key forth-mode-map (kbd "C-c C-c") 'forth-send-paragraph))
+(add-hook 'forth-mode-hook #'init-gforth-setup)
+
 ;; Julia-mode
 
 (when (and (require 'julia-mode nil t)
@@ -417,8 +425,8 @@
 (setq font-latex-fontify-sectioning 1.0)
 
 (when (package-installed-p 'auctex)
-  (if (eq system-type 'windows-nt)
-      (require 'tex-mik))
+  (when (eq system-type 'windows-nt)
+    (require 'tex-mik))
 
   (setq bibtex-align-at-equal-sign nil)
   (setq bibtex-comma-after-last-field t)
@@ -450,6 +458,9 @@
 
 (when (or (package-installed-p 'slime)
           (package-installed-p 'sly))
+  (let ((slime-helper "~/.quicklisp/slime-helper.el"))
+    (when (file-exists-p slime-helper)
+      (load slime-helper)))
   (setq inferior-lisp-program "sbcl"))
 
 
@@ -488,8 +499,8 @@
 (require 'ox-latex)
 (require 'ox-beamer)
 
-(if (eq system-type 'gnu/linux)
-    (add-to-list 'org-file-apps '("\\.pdf" . "evince %s")))
+(when (eq system-type 'gnu/linux)
+  (add-to-list 'org-file-apps '("\\.pdf" . "okular %s")))
 
 (add-to-list 'org-latex-classes
              '("scrartcl"
@@ -600,7 +611,7 @@ C-c n ‘mc/mark-next-like-this’
 C-c L ‘mc/skip-to-previous-like-this’
 C-c N ‘mc/skip-to-next-like-this’
 
-Tehn you can keep just pressing l, n, L, or N to spawn more
+Then you can keep just pressing l, n, L, or N to spawn more
 cursors using the same functions."
     (interactive)
     (let ((ev last-command-event)
