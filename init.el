@@ -72,9 +72,9 @@
         flx-ido magit projectile smex
         command-log-mode exec-path-from-shell
         flycheck multiple-cursors paredit yasnippet
-        auctex auctex-latexmk cider csv-mode elpher ess fountain-mode
+        auctex auctex-latexmk bqn-mode cider csv-mode elpher ess fountain-mode
         haskell-mode json-mode julia-mode julia-repl markdown-mode nov
-        slime geiser geiser-chez geiser-guile racket-mode
+        slime geiser geiser-chez geiser-guile geiser-gambit racket-mode
         gnu-elpa-keyring-update))
 
 ;; (when (version< emacs-version "26.3")
