@@ -32,7 +32,7 @@
 (unless (file-exists-p init-tmp-dir)
   (make-directory init-tmp-dir t))
 
-;; TODO: set temp of native compilation, once I'm on emacs >=29
+;; TODO: set temp of native compilation, once I'm on emacs >=28
 (setq backup-directory-alist         `((".*" . ,init-tmp-dir)))
 (setq auto-save-file-name-transforms `((".*" ,init-tmp-dir t)))
 (setq auto-save-list-file-prefix     init-tmp-dir)
