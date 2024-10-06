@@ -630,8 +630,8 @@ cursors using the same functions."
          (dolist (key '("l" "n" "L" "N"))
            (define-key map key #'init-adhoc-cursor-spawning-mode))
          map)
-       nil nil
-       "Use %k to spawn more cursors.")))
+       nil nil)))
+  ;; "Use %k to spawn more cursors."
 
   (dolist (key-str '("C-c l" "C-c n" "C-c L" "C-c N"))
     (global-set-key (kbd key-str) #'init-adhoc-cursor-spawning-mode))
