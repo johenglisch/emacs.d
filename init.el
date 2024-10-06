@@ -342,6 +342,11 @@
 (with-current-buffer "*scratch*"
   (local-set-key (kbd "C-c C-e") #'eval-print-last-sexp))
 
+;; BQN
+
+(when (require 'bqn-mode nil t)
+  (define-key bqn-mode-map (kbd "C-c C-c") #'bqn-comint-send-dwim))
+
 ;; Clojure
 
 (when (package-installed-p 'cider)
