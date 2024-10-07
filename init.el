@@ -1,23 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-;;; Custom Vars ------------------------------------------------------
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("7680e0d0fe93475fcdc514ae4df428245ab30c57114a753701e4fc09a15c949b" default))
- '(fill-column 79))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
-
 ;;; Folders ----------------------------------------------------------
 
 (defvar init-cache-dir
@@ -26,36 +8,12 @@
     (or (getenv "XDG_CACHE_HOME")
         "~/.cache")))
 
-(defvar init-tmp-dir
-  (expand-file-name "emacs" init-cache-dir))
-
-(unless (file-exists-p init-tmp-dir)
-  (make-directory init-tmp-dir t))
-
-;; TODO: set temp of native compilation, once I'm on emacs >=28
-(setq backup-directory-alist         `((".*" . ,init-tmp-dir)))
-(setq auto-save-file-name-transforms `((".*" ,init-tmp-dir t)))
-(setq auto-save-list-file-prefix     init-tmp-dir)
-(setq package-user-dir               (expand-file-name "elpa/" init-tmp-dir))
-(setq ido-save-directory-list-file   (expand-file-name "ido-last" init-tmp-dir))
-(setq save-place-file                (expand-file-name "places" init-tmp-dir))
-(setq eshell-directory-name          (expand-file-name "eshell/" init-tmp-dir))
-(setq smex-save-file                 (expand-file-name "smex-items" init-tmp-dir))
-(setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" init-tmp-dir))
-(setq projectile-cache-file          (expand-file-name "projectile.cache" init-tmp-dir))
-(setq mc/list-file                   (expand-file-name "mc-lists.el" init-tmp-dir))
-(setq transient-levels-file          (expand-file-name "transient/levels.el" init-tmp-dir))
-(setq transient-values-file          (expand-file-name "transient/values.el" init-tmp-dir))
-(setq transient-history-file         (expand-file-name "transient/history.el" init-tmp-dir))
-(setq kkc-init-file-name             (expand-file-name "kkcrc" init-tmp-dir))
-(setq nov-save-place-file            (expand-file-name "nov-places" init-tmp-dir))
-(setq racket-image-cache-dir         (expand-file-name "racket-image-cache/" init-tmp-dir))
-(setq racket-repl-history-directory  (expand-file-name "racket-repl-history/" init-tmp-dir))
-
 (when (eq system-type 'windows-nt)
   (setq default-directory "~/"))
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
+(setq custom-file (expand-file-name "custom.el" init-config-folder))
+
+(add-to-list 'load-path (expand-file-name "lisp" init-config-folder))
 
 
 ;;; Package Management -----------------------------------------------
@@ -91,7 +49,7 @@
 (defun init-open-init.el ()
   "Open init.el file in the current window."
   (interactive)
-  (find-file "~/.emacs.d/init.el"))
+  (find-file (expand-file-name "init.el" init-config-folder)))
 
 (defun init-pop-out-window ()
    "Pop out the current window into a new frame."
@@ -328,6 +286,8 @@
 ;; Yasnippet
 
 (when (require 'yasnippet nil t)
+  (setq yas-snippet-dirs
+        (list (expand-file-name "snippets" init-config-folder)))
   (yas-global-mode 1))
 
 
