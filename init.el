@@ -27,16 +27,14 @@
 (setq package-selected-packages
       '(ayu-theme autumn-light-theme green-phosphor-theme lavender-theme
         lush-theme professional-theme
-        flx-ido magit projectile smex
-        command-log-mode exec-path-from-shell
+        magit flx-ido smex command-log-mode
+        ;; Am I ever using these?
+        ;; exec-path-from-shell
         flycheck multiple-cursors paredit yasnippet
         auctex auctex-latexmk bqn-mode cider csv-mode elpher ess fountain-mode
-        haskell-mode json-mode julia-mode julia-repl markdown-mode nov
-        slime geiser geiser-chez geiser-guile geiser-gambit racket-mode
+        json-mode markdown-mode nov geiser geiser-chez geiser-guile
+        geiser-gambit
         gnu-elpa-keyring-update))
-
-;; (when (version< emacs-version "26.3")
-;;   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 
 ;;; Helper Functions -------------------------------------------------
