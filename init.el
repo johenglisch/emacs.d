@@ -144,18 +144,18 @@
 (column-number-mode t)
 
 (add-to-list 'default-frame-alist '(width . 83))
-(add-to-list 'default-frame-alist '(height . 30))
+(add-to-list 'default-frame-alist '(height . 35))
 
-(load-theme (if window-system
-                'wheatgrass
-              'wheatgrass))
+;; (load-theme (if window-system
+;;                 'wheatgrass
+;;               'wheatgrass))
 
 (setq frame-title-format "%b – Emacs")
 (setq frame-resize-pixelwise t)
 
 (when (eq system-type 'gnu/linux)
-  (add-to-list 'initial-frame-alist '(font . "Anonymous Pro-14"))
-  (add-to-list 'default-frame-alist '(font . "Anonymous Pro-14")))
+  (add-to-list 'initial-frame-alist '(font . "Monospace-12"))
+  (add-to-list 'default-frame-alist '(font . "Monospace-12")))
 
 (when (eq system-type 'windows-nt)
   (setq inhibit-compacting-font-caches t)
