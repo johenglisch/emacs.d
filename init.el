@@ -12,6 +12,8 @@
   (setq default-directory "~/"))
 
 (setq custom-file (expand-file-name "custom.el" init-config-folder))
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 (add-to-list 'load-path (expand-file-name "lisp" init-config-folder))
 
