@@ -83,6 +83,43 @@
                (= 0 (shell-command (format "git clone '%s' '%s'" url folder)))
                (dired folder)))))))
 
+(defun init-wrap-region (region-start region-end left right)
+  (let ((left-len  (if (characterp left)  1 (length left)))
+        (right-len (if (characterp right) 1 (length right)))
+        (start (if (region-active-p) region-start (point)))
+        (end   (if (region-active-p) region-end   (point))))
+    (goto-char end)
+    (insert right)
+    (goto-char start)
+    (insert left)
+    (if (= start end)
+        (goto-char (+ start left-len))
+      (goto-char (+ end left-len right-len)))))
+
+(defun init-single-quote-region (region-start region-end)
+  (interactive "r")
+  (init-wrap-region region-start region-end ?‘ ?’))
+
+(defun init-double-quote-region (region-start region-end)
+  (interactive "r")
+  (init-wrap-region region-start region-end ?“ ?”))
+
+(defun init-kraut-quote-region (region-start region-end)
+  (interactive "r")
+  (init-wrap-region region-start region-end ?» ?«))
+
+(defun init-kraut-single-quote-region (region-start region-end)
+  (interactive "r")
+  (init-wrap-region region-start region-end ?› ?‹))
+
+(defun init-kraut-quote-region-2 (region-start region-end)
+  (interactive "r")
+  (init-wrap-region region-start region-end ?„ ?“))
+
+(defun init-kraut-single-quote-region-2 (region-start region-end)
+  (interactive "r")
+  (init-wrap-region region-start region-end ?‚ ?‘))
+
 ;; ;; TODO: function for setting this key bind to an interactive funtion
 ;; (global-set-key (kbd "C-c d") #'init-goto-repo-folder)
 
@@ -536,6 +573,13 @@
 (global-set-key (kbd "C-c f") #'find-file-at-point)
 
 (global-set-key (kbd "C-c t") #'term)
+
+(global-set-key (kbd "C-c q q") #'init-single-quote-region)
+(global-set-key (kbd "C-c q Q") #'init-double-quote-region)
+(global-set-key (kbd "C-c q d") #'init-kraut-quote-region)
+(global-set-key (kbd "C-c q D") #'init-kraut-single-quote-region)
+(global-set-key (kbd "C-c q k") #'init-kraut-quote-region-2)
+(global-set-key (kbd "C-c q K") #'init-kraut-single-quote-region-2)
 
 (global-set-key (kbd "C-c w w") #'make-frame)
 (global-set-key (kbd "C-c w 1") #'delete-other-frames)
