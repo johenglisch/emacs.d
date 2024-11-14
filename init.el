@@ -641,6 +641,9 @@ cursors using the same functions."
        nil nil)))
   ;; "Use %k to spawn more cursors."
 
+  (when (null mc/cmds-to-run-once)
+    (setq mc/cmds-to-run-once '(init-adhoc-cursor-spawning-mode)))
+
   (dolist (key-str '("C-c l" "C-c n" "C-c L" "C-c N"))
     (global-set-key (kbd key-str) #'init-adhoc-cursor-spawning-mode))
   (global-set-key (kbd "C-c m") #'mc/edit-lines)
