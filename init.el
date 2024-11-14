@@ -52,11 +52,17 @@
 (defun init-pop-out-window ()
    "Pop out the current window into a new frame."
    (interactive)
-   (if (< (length (window-list)) 2)
-       (message "Frame has only one window.")
-     (let ((current-window (selected-window)))
-       (and (make-frame)
-            (delete-window current-window)))))
+   (let ((windows (window-list nil 'no-minibufs)))
+     (cond ((null windows)
+            (message "Frame has no windows."))
+           ((null (cdr windows))
+            (message "Frame has only one window."))
+           (t
+            (let ((current-window (selected-window)))
+              (if (window-minibuffer-p current-window)
+                  (message "Won't pop out minibuffer")
+                (and (make-frame)
+                     (delete-window current-window))))))))
 
 (defvar init-repos-folder (expand-file-name "repos" "~"))
 
