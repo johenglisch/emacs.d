@@ -160,7 +160,7 @@
 (defun init-set-font-fallback (frame)
   (when (display-graphic-p frame)
     (set-fontset-font t 'han "Source Han Sans Normal" frame 'prepend)
-    (set-fontset-font t 'cjk-misc "Source Han Sans Normal" frame 'preprend)
+    (set-fontset-font t 'cjk-misc "Source Han Sans Normal" frame 'prepend)
     (set-fontset-font t 'kana "Source Han Sans Normal" frame 'prepend)
     (set-fontset-font t 'shavian "Fairfax HD" frame 'prepend)))
 
