@@ -2,12 +2,6 @@
 
 ;;; Folders ----------------------------------------------------------
 
-(defvar init-cache-dir
-  (if (eq system-type 'windows-nt)
-      "~/_cache"
-    (or (getenv "XDG_CACHE_HOME")
-        "~/.cache")))
-
 (when (eq system-type 'windows-nt)
   (setq default-directory "~/"))
 
@@ -276,7 +270,7 @@
 
 (when (executable-find "hunspell")
   ;; nicked from https://200ok.ch/posts/2020-08-22_setting_up_spell_checking_with_multiple_dictionaries.html
-  (setq ispell-personal-dictionary (expand-file-name "hunspell-personal-dict" init-cache-dir))
+  (setq ispell-personal-dictionary (expand-file-name "hunspell-personal-dict" user-emacs-directory))
   (unless (file-exists-p ispell-personal-dictionary)
     (write-region "" nil ispell-personal-dictionary nil 0))
 
@@ -382,7 +376,7 @@
   (add-hook 'julia-mode-hook #'julia-repl-mode)
 
   (defvar init-julia-lsp-so (expand-file-name "lsp-julia/julia-lsp.so"
-                                              init-cache-dir))
+                                              user-emacs-directory))
   (when (file-exists-p init-julia-lsp-so)
     ;; Recommendation according to https://github.com/gdkrmr/lsp-julia
     ;;
@@ -589,6 +583,10 @@
 
 ;; never used this
 (global-set-key (kbd "C-c c") #'fixup-whitespace)
+
+;; allow me to type space and question mark in minibuffers
+(keymap-unset minibuffer-local-completion-map "SPC")
+(keymap-unset minibuffer-local-completion-map "?")
 
 ;; Plugins
 
